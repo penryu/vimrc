@@ -19,6 +19,7 @@ set display=uhex
 set errorbells
 set expandtab
 set fileformats=unix,dos
+set foldmethod=indent
 set ignorecase
 set incsearch
 set laststatus=2
@@ -36,19 +37,13 @@ set nosmartindent
 set nosmarttab
 set softtabstop=2
 set splitbelow
-set suffixes=.ps,.swp
-set tabstop=8
-set tags=.tags,tags
 set terse
 set textwidth=72
 set timeout nottimeout timeoutlen=1000 ttimeoutlen=100
-set viminfo='10,/10,:30,f0,r/Volumes,r/tmp
+set viminfo='7,r/Volumes,r/media,r/mnt,r/tmp
 set virtualedit=block
 set visualbell
-set wildchar=<Tab>
-set wildignore=.a,.dvi,.ps,.so,.tar
 set wildmenu
-set nowrap
 
 
 """""
@@ -76,24 +71,17 @@ if has('autocmd')
   endf
   autocmd! VimEnter   * call ResizeHook()
   autocmd! VimResized * call ResizeHook()
-endif
 
-if has('autocmd')
   filetype plugin indent on
 
   "" filetype settings
-  autocmd! FileType c         setl sw=8 sts=8 ts=8 noexpandtab
+  autocmd! FileType c         setl sts=8 sw=8 noexpandtab
   autocmd! FileType gitcommit setl tw=72
-  autocmd! FileType help      setl nonu ss=0 siso=0
-  autocmd! FileType java      setl sw=2 sts=2 cpt=],i fdl=20 fdm=indent
-      \ inc=^\s*import inex=substitute(v:fname,'\\.','/','g') pa+=src/**
-  autocmd! FileType mail      setl sw=2 sts=2 tw=70 com+=n:> fo+=tcql lbr noml wrap
-  autocmd! FileType man       setl nonu ss=0 siso=0
-  autocmd! FileType perl      setl sw=4 sts=4
-  autocmd! FileType python    setl sw=4 sts=4 ts=4 expandtab fdm=indent
+  autocmd! FileType java      setl sts=4 sw=4
+  autocmd! FileType mail      setl sts=4 sw=4 tw=70 com+=n:> noml
+  autocmd! FileType perl      setl sts=4 sw=4
+  autocmd! FileType python    setl sts=4 sw=4
   autocmd! FileType python    map <buffer> <Leader>f :call Flake8()<CR>
-  autocmd! FileType ruby      setl sw=2 sts=2 fdm=indent
-  autocmd! FileType xml       setl sw=2 sts=2 ts=2 expandtab
 
 endif
 
