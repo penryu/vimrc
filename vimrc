@@ -19,6 +19,7 @@ set display=uhex
 set errorbells
 set expandtab
 set fileformats=unix,dos
+set foldlevelstart=20
 set foldmethod=indent
 set ignorecase
 set incsearch
