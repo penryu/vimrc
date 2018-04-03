@@ -133,10 +133,14 @@ cabbr <expr> %% expand('%:p:h')
 call plug#begin('~/.vim/plugs')
 " bufexplorer
 Plug 'jlanzarotta/bufexplorer'
+" json
+Plug 'elzr/vim-json'
 " nginx
 Plug 'chr4/nginx.vim'
 " plist
 Plug 'darfink/vim-plist'
+let g:plist_display_format = 'json'
+let g:plist_json_filetype = 'json'
 call plug#end()
 
 " highlights matching parens
