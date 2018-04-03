@@ -1,9 +1,6 @@
 " ~/.vim/vimrc
 " Tim Hammerquist <penryu@gmail.com>
 
-"""""
-" options
-"
 set nocompatible
 
 set autoindent
@@ -21,11 +18,12 @@ set expandtab
 set fileformats=unix,dos
 set foldlevelstart=20
 set foldmethod=indent
+set nohlsearch
 set ignorecase
 set incsearch
 set laststatus=2
 set linebreak
-set modeline
+set modeline modelines=3
 set nonumber
 set pumheight=7
 set ruler
@@ -47,9 +45,6 @@ set visualbell
 set wildmenu
 
 
-"""""
-" more config
-"
 if has("syntax")
   syntax on
   if &t_Co > 2 || has("gui_running")
@@ -87,15 +82,8 @@ if has('autocmd')
 endif
 
 
-"""""
-" commands/maps/abbreviations
-"
-
-" pretty-print xml file
 command! XMLTidy %!tidy -q -i -xml
 command! XMLLint %!xmllint --format - 2>&1
-" convert binary plist to xml
-command! PLXml %!plutil -convert xml1 -o - %
 
 "let mapleader = "\\"
 let mapleader = ","
@@ -127,42 +115,22 @@ vnoremap  <C-c> "+y
 
 cabbr <expr> %% expand('%:p:h')
 
-
-"""""
-" vim-plug
-call plug#begin('~/.vim/plugs')
-" bufexplorer
-Plug 'jlanzarotta/bufexplorer'
-" git
-Plug 'tpope/vim-fugitive'
-" javascript
-Plug 'pangloss/vim-javascript'
-" json
-Plug 'elzr/vim-json'
-" nginx
-Plug 'chr4/nginx.vim'
-" plist
-Plug 'darfink/vim-plist'
-let g:plist_display_format = 'json'
-let g:plist_json_filetype = 'json'
-call plug#end()
+"if has('packages')
+  call plug#begin('~/.vim/plugs')
+    Plug 'jlanzarotta/bufexplorer'
+      let g:bufExplorerSortBy='name'
+      let g:bufExplorerSplitType=''
+    Plug 'tpope/vim-fugitive'
+    Plug 'pangloss/vim-javascript'
+    Plug 'elzr/vim-json'
+    Plug 'chr4/nginx.vim'
+    Plug 'darfink/vim-plist'
+      let g:plist_display_format = 'json'
+      let g:plist_json_filetype = 'json'
+  call plug#end()
+"endif
 
 " highlights matching parens
-packadd matchit
-
+runtime macros/matchit.vim
 " load builtin manpage viewer
 runtime ftplugin/man.vim
-" local
-"
-"""""
-" plugin config
-"
-" bufexplorer.vim
-let g:bufExplorerSortBy='name'        " sort by buffer name
-let g:bufExplorerSplitType=''         " split bufexplorer ('' or 'v')
-
-
-"""""
-" local configuration from ~/.vim/local/*.vim
-"
-runtime! local/*.vim
