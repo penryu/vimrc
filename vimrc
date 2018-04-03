@@ -70,8 +70,8 @@ if has('autocmd')
       set nonumber
     endif
   endf
-  autocmd! VimEnter   * call ResizeHook()
-  autocmd! VimResized * call ResizeHook()
+  "autocmd! VimEnter   * call ResizeHook()
+  "autocmd! VimResized * call ResizeHook()
 
   filetype plugin indent on
 
@@ -133,6 +133,10 @@ cabbr <expr> %% expand('%:p:h')
 call plug#begin('~/.vim/plugs')
 " bufexplorer
 Plug 'jlanzarotta/bufexplorer'
+" git
+Plug 'tpope/vim-fugitive'
+" javascript
+Plug 'pangloss/vim-javascript'
 " json
 Plug 'elzr/vim-json'
 " nginx
