@@ -115,22 +115,43 @@ vnoremap  <C-c> "+y
 
 cabbr <expr> %% expand('%:p:h')
 
-"if has('packages')
-  call plug#begin('~/.vim/plugs')
-    Plug 'jlanzarotta/bufexplorer'
-      let g:bufExplorerSortBy='name'
-      let g:bufExplorerSplitType=''
-    Plug 'tpope/vim-fugitive'
-    Plug 'pangloss/vim-javascript'
-    Plug 'elzr/vim-json'
-    Plug 'chr4/nginx.vim'
-    Plug 'darfink/vim-plist'
-      let g:plist_display_format = 'json'
-      let g:plist_json_filetype = 'json'
-  call plug#end()
-"endif
+call plug#begin('~/.vim/plugs')
+  Plug 'jlanzarotta/bufexplorer'
+    let g:bufExplorerSortBy='name'
+    let g:bufExplorerSplitType=''
+  Plug 'vim-airline/vim-airline'
+    let g:airline_powerline_fonts=1
+    let g:airline_skip_empty_sections=1
+    let g:airline#parts#ffenc#skip_expected_string='utf-8[unix]'
+  Plug 'vim-airline/vim-airline-themes'
+    let g:airline_theme='distinguished'
+
+  " clojure
+  "Plug 'Olical/conjure', { 'tag': 'v1.3.0', 'do': 'bin/compile'  }
+  Plug 'vim-scripts/paredit.vim'
+    let g:paredit_smartjump = 1
+  Plug 'tpope/vim-fireplace'
+  " git
+  Plug 'tpope/vim-fugitive'
+  " go
+  Plug 'fatih/vim-go', {'do': ':GoUpdateBinaries'}
+    au FileType go call PareditInitBuffer()
+  " js
+  Plug 'pangloss/vim-javascript'
+    let g:javascript_plugin_jsdoc = 1
+  Plug 'elzr/vim-json'
+  " nginx
+  Plug 'chr4/nginx.vim'
+  " plist
+  Plug 'darfink/vim-plist'
+    let g:plist_display_format = 'json'
+    let g:plist_json_filetype = 'json'
+  " rust
+  Plug 'rust-lang/rust.vim'
+call plug#end()
 
 " highlights matching parens
 runtime macros/matchit.vim
 " load builtin manpage viewer
 runtime ftplugin/man.vim
+
