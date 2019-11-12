@@ -140,6 +140,8 @@ call plug#begin('~/.vim/plugs')
   Plug 'pangloss/vim-javascript'
     let g:javascript_plugin_jsdoc = 1
   Plug 'elzr/vim-json'
+  Plug 'leafgarland/typescript-vim'
+    autocmd BufNewFile,BufRead *.ts,*.tsx setlocal filetype=typescript
   " nginx
   Plug 'chr4/nginx.vim'
   " plist
