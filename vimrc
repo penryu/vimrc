@@ -8,7 +8,7 @@ set autoread
 set autowrite
 set background=dark
 set backspace=eol,indent,start
-set backupcopy=auto
+set nobackup backupcopy=auto nowritebackup
 set cmdheight=2
 set colorcolumn=81,+1
 set noconfirm
@@ -28,17 +28,19 @@ set nonumber
 set pumheight=7
 set ruler
 set scrolloff=3
-set shiftwidth=2
-set shortmess=aotI
+set shiftwidth=4
+set shortmess=acotI
 set sidescroll=1
 set sidescrolloff=21
+set signcolumn=yes
 set nosmartindent
 set nosmarttab
-set softtabstop=2
+set softtabstop=4
 set splitbelow
 set terse
-set textwidth=72
+set textwidth=80
 set timeout nottimeout timeoutlen=1000 ttimeoutlen=100
+set updatetime=500
 set viminfo='7,r/Volumes,r/media,r/mnt,r/tmp
 set virtualedit=block
 set visualbell
@@ -71,19 +73,10 @@ if has('autocmd')
   filetype plugin indent on
 
   "" filetype settings
-  autocmd! FileType c         setl sts=8 sw=8 noexpandtab
-  autocmd! FileType gitcommit setl tw=72
-  autocmd! FileType java      setl sts=4 sw=4
-  autocmd! FileType mail      setl sts=4 sw=4 tw=70 com+=n:> noml
-  autocmd! FileType perl      setl sts=4 sw=4
-  autocmd! FileType python    setl sts=4 sw=4
-  autocmd! FileType python    map <buffer> <Leader>f :call Flake8()<CR>
-
+  autocmd! FileType go    setl sts=0 sw=0 ts=4 noexpandtab
+  autocmd! FileType mail  setl tw=70 com+=n:> noml
+  autocmd! FileType vim   setl sts=2 sw=2
 endif
-
-
-command! XMLTidy %!tidy -q -i -xml
-command! XMLLint %!xmllint --format - 2>&1
 
 "let mapleader = "\\"
 let mapleader = ","
@@ -116,44 +109,154 @@ vnoremap  <C-c> "+y
 cabbr <expr> %% expand('%:p:h')
 
 call plug#begin('~/.vim/plugs')
-  Plug 'jlanzarotta/bufexplorer'
-    let g:bufExplorerSortBy='name'
-    let g:bufExplorerSplitType=''
-  Plug 'vim-airline/vim-airline'
-    let g:airline_powerline_fonts=1
-    let g:airline_skip_empty_sections=1
-    let g:airline#parts#ffenc#skip_expected_string='utf-8[unix]'
-  Plug 'vim-airline/vim-airline-themes'
-    let g:airline_theme='distinguished'
+Plug 'jlanzarotta/bufexplorer'
+  let g:bufExplorerSortBy='name'
+  let g:bufExplorerSplitType=''
 
-  " clojure
-  "Plug 'Olical/conjure', { 'tag': 'v1.3.0', 'do': 'bin/compile'  }
-  Plug 'vim-scripts/paredit.vim'
-    let g:paredit_smartjump = 1
-  Plug 'tpope/vim-fireplace'
-  " git
-  Plug 'tpope/vim-fugitive'
-  " go
-  Plug 'fatih/vim-go', {'do': ':GoUpdateBinaries'}
-    au FileType go call PareditInitBuffer()
-  " js
-  Plug 'pangloss/vim-javascript'
-    let g:javascript_plugin_jsdoc = 1
-  Plug 'elzr/vim-json'
-  Plug 'leafgarland/typescript-vim'
-    autocmd BufNewFile,BufRead *.ts,*.tsx setlocal filetype=typescript
-  " nginx
-  Plug 'chr4/nginx.vim'
-  " plist
-  Plug 'darfink/vim-plist'
-    let g:plist_display_format = 'json'
-    let g:plist_json_filetype = 'json'
-  " rust
-  Plug 'rust-lang/rust.vim'
+"Plug 'majutsushi/tagbar'
+  "nmap <Leader>tb :TagbarToggle<CR>
+
+"Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neoclide/coc.nvim', {'branch': 'master'}
+  if 1
+    " coc stuff - seems to need a lot of crap
+    " Use tab for trigger completion with characters ahead and navigate.
+    " Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
+    inoremap <silent><expr> <TAB>
+          \ pumvisible() ? "\<C-n>" :
+          \ <SID>check_back_space() ? "\<TAB>" :
+          \ coc#refresh()
+    inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+    function! s:check_back_space() abort
+      let col = col('.') - 1
+      return !col || getline('.')[col - 1]  =~# '\s'
+    endfunction
+    " Use <c-space> to trigger completion.
+    inoremap <silent><expr> <c-space> coc#refresh()
+    " Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
+    " Coc only does snippet and additional edit on confirm.
+    inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+    " Or use `complete_info` if your vim support it, like:
+    " inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+    " Use `[g` and `]g` to navigate diagnostics
+    nmap <silent> [g <Plug>(coc-diagnostic-prev)
+    nmap <silent> ]g <Plug>(coc-diagnostic-next)
+    " Remap keys for gotos
+    nmap <silent> gd <Plug>(coc-definition)
+    nmap <silent> gy <Plug>(coc-type-definition)
+    nmap <silent> gi <Plug>(coc-implementation)
+    nmap <silent> gr <Plug>(coc-references)
+    " Use K to show documentation in preview window
+    nnoremap <silent> K :call <SID>show_documentation()<CR>
+    function! s:show_documentation()
+      if (index(['vim','help'], &filetype) >= 0)
+        execute 'h '.expand('<cword>')
+      else
+        call CocAction('doHover')
+      endif
+    endfunction
+    " Highlight symbol under cursor on CursorHold
+    autocmd CursorHold * silent call CocActionAsync('highlight')
+    " Remap for rename current word
+    nmap <leader>rn <Plug>(coc-rename)
+    " Remap for format selected region
+    xmap <leader>f  <Plug>(coc-format-selected)
+    nmap <leader>f  <Plug>(coc-format-selected)
+    augroup mygroup
+      autocmd!
+      " Setup formatexpr specified filetype(s).
+      autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+      " Update signature help on jump placeholder
+      autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+    augroup end
+    " Remap for do codeAction of selected region, ex: `<leader>aap` for current paragraph
+    xmap <leader>a  <Plug>(coc-codeaction-selected)
+    nmap <leader>a  <Plug>(coc-codeaction-selected)
+    " Remap for do codeAction of current line
+    nmap <leader>ac  <Plug>(coc-codeaction)
+    " Fix autofix problem of current line
+    nmap <leader>qf  <Plug>(coc-fix-current)
+    " Create mappings for function text object, requires document symbols feature of languageserver.
+    xmap if <Plug>(coc-funcobj-i)
+    xmap af <Plug>(coc-funcobj-a)
+    omap if <Plug>(coc-funcobj-i)
+    omap af <Plug>(coc-funcobj-a)
+    " Use <TAB> for select selections ranges, needs server support, like: coc-tsserver, coc-python
+    nmap <silent> <TAB> <Plug>(coc-range-select)
+    xmap <silent> <TAB> <Plug>(coc-range-select)
+    " Use `:Format` to format current buffer
+    command! -nargs=0 Format :call CocAction('format')
+    " Use `:Fold` to fold current buffer
+    command! -nargs=? Fold :call     CocAction('fold', <f-args>)
+    " use `:OR` for organize import of current buffer
+    command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
+    " Add status line support, for integration with other plugin, checkout `:h coc-status`
+    set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+    " Using CocList
+    " Show all diagnostics
+    nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
+    " Manage extensions
+    nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
+    " Show commands
+    nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
+    " Find symbol of current document
+    nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
+    " Search workspace symbols
+    nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
+    " Do default action for next item.
+    nnoremap <silent> <space>j  :<C-u>CocNext<CR>
+    " Do default action for previous item.
+    nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
+    " Resume latest coc list
+    nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+  endif
+
+Plug 'vim-airline/vim-airline'
+  let g:airline_powerline_fonts=1
+  let g:airline_skip_empty_sections=1
+  let g:airline#parts#ffenc#skip_expected_string='utf-8[unix]'
+
+Plug 'vim-airline/vim-airline-themes'
+  let g:airline_theme='distinguished'
+
+Plug 'tpope/vim-obsession'
+
+" clojure
+Plug 'Olical/conjure', { 'tag': 'v2.1.2', 'do': 'bin/compile' }
+  let g:conjure_log_direction	 = "horizontal"
+Plug 'vim-scripts/paredit.vim'
+  let g:paredit_smartjump = 1
+Plug 'tpope/vim-fireplace'
+
+" git
+Plug 'tpope/vim-fugitive'
+
+" go
+Plug 'fatih/vim-go', {'do': ':GoUpdateBinaries'}
+  au FileType go call PareditInitBuffer()
+
+" js
+Plug 'pangloss/vim-javascript'
+  let g:javascript_plugin_jsdoc = 1
+Plug 'elzr/vim-json'
+Plug 'leafgarland/typescript-vim'
+  autocmd BufNewFile,BufRead *.ts,*.tsx setlocal filetype=typescript
+
+" nginx
+Plug 'chr4/nginx.vim'
+
+" plist
+Plug 'darfink/vim-plist'
+  let g:plist_display_format = 'json'
+  let g:plist_json_filetype = 'json'
+
+" rust
+Plug 'rust-lang/rust.vim'
 call plug#end()
 
 " highlights matching parens
 runtime macros/matchit.vim
 " load builtin manpage viewer
 runtime ftplugin/man.vim
+
 
