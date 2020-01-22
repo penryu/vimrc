@@ -40,7 +40,7 @@ set splitbelow
 set terse
 set textwidth=80
 set timeout nottimeout timeoutlen=1000 ttimeoutlen=100
-set updatetime=500
+set updatetime=300
 set viminfo='7,r/Volumes,r/media,r/mnt,r/tmp
 set virtualedit=block
 set visualbell
