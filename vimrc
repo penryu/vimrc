@@ -5,7 +5,6 @@ set nocompatible
 
 set autoindent
 set autoread
-set autowrite
 set background=dark
 set backspace=eol,indent,start
 set nobackup backupcopy=auto nowritebackup
@@ -73,9 +72,11 @@ if has('autocmd')
   filetype plugin indent on
 
   "" filetype settings
-  autocmd! FileType go    setl sts=0 sw=0 ts=4 noexpandtab
-  autocmd! FileType mail  setl tw=70 com+=n:> noml
-  autocmd! FileType vim   setl sts=2 sw=2
+  autocmd! FileType gitcommit setl tw=72
+  autocmd! FileType go        setl sts=0 sw=0 ts=4 noexpandtab
+  autocmd! FileType mail      setl tw=70 com+=n:> noml
+  autocmd! FileType perl      setl ep=perltidy\ -st
+  autocmd! FileType vim       setl sts=2 sw=2
 endif
 
 "let mapleader = "\\"
@@ -258,5 +259,4 @@ call plug#end()
 runtime macros/matchit.vim
 " load builtin manpage viewer
 runtime ftplugin/man.vim
-
 
