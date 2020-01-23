@@ -117,8 +117,8 @@ Plug 'jlanzarotta/bufexplorer'
 "Plug 'majutsushi/tagbar'
   "nmap <Leader>tb :TagbarToggle<CR>
 
-"Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'neoclide/coc.nvim', {'branch': 'master'}
+"Plug 'neoclide/coc.nvim', {'branch': 'master'}
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
   if 1
     " coc stuff - seems to need a lot of crap
     " Use tab for trigger completion with characters ahead and navigate.
