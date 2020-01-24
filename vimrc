@@ -119,6 +119,7 @@ Plug 'majutsushi/tagbar'
 
 "Plug 'neoclide/coc.nvim', {'branch': 'master'}
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+  let g:coc_global_extensions = ['coc-python', 'coc-java']
   if 1
     " coc stuff - seems to need a lot of crap
     " Use tab for trigger completion with characters ahead and navigate.
@@ -213,24 +214,23 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
   endif
 
 Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
   let g:airline_powerline_fonts=1
   let g:airline_skip_empty_sections=1
   let g:airline#parts#ffenc#skip_expected_string='utf-8[unix]'
-
-Plug 'vim-airline/vim-airline-themes'
   let g:airline_theme='distinguished'
 
+Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-obsession'
+Plug 'tpope/vim-surround'
 
 " clojure
 Plug 'Olical/conjure', { 'tag': 'v2.1.2', 'do': 'bin/compile' }
-  let g:conjure_log_direction	 = "horizontal"
+  let g:conjure_log_direction = "horizontal"
+  call add(g:coc_global_extensions, 'coc-conjure')
 Plug 'vim-scripts/paredit.vim'
   let g:paredit_smartjump = 1
 Plug 'tpope/vim-fireplace'
-
-" git
-Plug 'tpope/vim-fugitive'
 
 " go
 Plug 'fatih/vim-go', {'do': ':GoUpdateBinaries'}
@@ -239,20 +239,16 @@ Plug 'fatih/vim-go', {'do': ':GoUpdateBinaries'}
 " js
 Plug 'pangloss/vim-javascript'
   let g:javascript_plugin_jsdoc = 1
+  call add(g:coc_global_extensions, 'coc-eslint')
+  call add(g:coc_global_extensions, 'coc-tslint')
+  call add(g:coc_global_extensions, 'coc-tsserver')
 Plug 'elzr/vim-json'
+  call add(g:coc_global_extensions, 'coc-json')
 Plug 'leafgarland/typescript-vim'
-  autocmd BufNewFile,BufRead *.ts,*.tsx setlocal filetype=typescript
-
-" nginx
-Plug 'chr4/nginx.vim'
-
-" plist
-Plug 'darfink/vim-plist'
-  let g:plist_display_format = 'json'
-  let g:plist_json_filetype = 'json'
 
 " rust
 Plug 'rust-lang/rust.vim'
+
 call plug#end()
 
 " highlights matching parens
