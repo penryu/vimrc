@@ -114,8 +114,8 @@ Plug 'jlanzarotta/bufexplorer'
   let g:bufExplorerSortBy='name'
   let g:bufExplorerSplitType=''
 
-"Plug 'majutsushi/tagbar'
-  "nmap <Leader>tb :TagbarToggle<CR>
+Plug 'majutsushi/tagbar'
+  nmap <Leader>tb :TagbarToggle<CR>
 
 "Plug 'neoclide/coc.nvim', {'branch': 'master'}
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
