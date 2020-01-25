@@ -222,7 +222,7 @@ Plug 'vim-airline/vim-airline-themes'
 
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-obsession'
-Plug 'tpope/vim-surround'
+Plug 'machakann/vim-sandwich'
 
 " clojure
 Plug 'Olical/conjure', { 'tag': 'v2.1.2', 'do': 'bin/compile' }
@@ -240,11 +240,13 @@ Plug 'fatih/vim-go', {'do': ':GoUpdateBinaries'}
 Plug 'pangloss/vim-javascript'
   let g:javascript_plugin_jsdoc = 1
   call add(g:coc_global_extensions, 'coc-eslint')
-  call add(g:coc_global_extensions, 'coc-tslint')
-  call add(g:coc_global_extensions, 'coc-tsserver')
 Plug 'elzr/vim-json'
+  let g:vim_json_syntax_conceal = 0
   call add(g:coc_global_extensions, 'coc-json')
 Plug 'leafgarland/typescript-vim'
+Plug 'ianks/vim-tsx'
+  call add(g:coc_global_extensions, 'coc-tslint')
+  call add(g:coc_global_extensions, 'coc-tsserver')
 
 " rust
 Plug 'rust-lang/rust.vim'
