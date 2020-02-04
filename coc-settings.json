@@ -1,0 +1,14 @@
+{
+    "languageserver":{
+        "kotlin": {
+            "command": "~/.config/nvim/server/bin/kotlin-language-server",
+            "filetypes": ["kotlin"]
+        }
+    },
+    "python.formatting.provider": "autopep8",
+    "python.linting.enabled": true,
+    "python.jediEnabled": false,
+    "python.linting.flake8Enabled": true,
+    "python.linting.mypyEnabled": true,
+    "python.linting.pylintEnabled": true
+}

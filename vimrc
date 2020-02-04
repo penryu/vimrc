@@ -119,7 +119,7 @@ Plug 'majutsushi/tagbar'
 
 "Plug 'neoclide/coc.nvim', {'branch': 'master'}
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-  let g:coc_global_extensions = ['coc-python', 'coc-java']
+  let g:coc_global_extensions = ['coc-css', 'coc-html', 'coc-yaml']
   if 1
     " coc stuff - seems to need a lot of crap
     " Use tab for trigger completion with characters ahead and navigate.
@@ -195,22 +195,16 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
     " Add status line support, for integration with other plugin, checkout `:h coc-status`
     set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
     " Using CocList
-    " Show all diagnostics
     nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
-    " Manage extensions
     nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
-    " Show commands
     nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
+    nnoremap <silent> <space>j  :<C-u>CocNext<CR>
+    nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
+    nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
     " Find symbol of current document
     nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
     " Search workspace symbols
     nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
-    " Do default action for next item.
-    nnoremap <silent> <space>j  :<C-u>CocNext<CR>
-    " Do default action for previous item.
-    nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
-    " Resume latest coc list
-    nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
   endif
 
 Plug 'vim-airline/vim-airline'
@@ -222,31 +216,40 @@ Plug 'vim-airline/vim-airline-themes'
 
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-obsession'
+Plug 'sheerun/vim-polyglot'
 Plug 'machakann/vim-sandwich'
 
 " clojure
 Plug 'Olical/conjure', { 'tag': 'v2.1.2', 'do': 'bin/compile' }
+  let g:conjure_log_blacklist = ["up", "ret", "ret-multiline", "load-file", "eval"]
   let g:conjure_log_direction = "horizontal"
+  let g:conjure_log_size_small = 33
   call add(g:coc_global_extensions, 'coc-conjure')
 Plug 'vim-scripts/paredit.vim'
   let g:paredit_smartjump = 1
-Plug 'tpope/vim-fireplace'
 
 " go
 Plug 'fatih/vim-go', {'do': ':GoUpdateBinaries'}
   au FileType go call PareditInitBuffer()
+
+" java/kotlin
+Plug 'udalov/kotlin-vim'
+  call add(g:coc_global_extensions, 'coc-java')
 
 " js
 Plug 'pangloss/vim-javascript'
   let g:javascript_plugin_jsdoc = 1
   call add(g:coc_global_extensions, 'coc-eslint')
 Plug 'elzr/vim-json'
-  let g:vim_json_syntax_conceal = 0
+  let g:vim_json_syntax_conceal = 1
   call add(g:coc_global_extensions, 'coc-json')
 Plug 'leafgarland/typescript-vim'
 Plug 'ianks/vim-tsx'
   call add(g:coc_global_extensions, 'coc-tslint')
   call add(g:coc_global_extensions, 'coc-tsserver')
+
+" python
+  call add(g:coc_global_extensions, 'coc-python')
 
 " rust
 Plug 'rust-lang/rust.vim'
