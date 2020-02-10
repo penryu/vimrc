@@ -10,6 +10,7 @@ set backspace=eol,indent,start
 set nobackup backupcopy=auto nowritebackup
 set cmdheight=2
 set colorcolumn=81,+1
+set conceallevel=2
 set noconfirm
 set cursorline
 set display=uhex
@@ -56,6 +57,17 @@ if has("syntax")
       colorscheme apprentice
     endif
   endif
+
+  function! ToggleConcealLevel()
+      if &conceallevel == 0
+          setlocal conceallevel=2
+      else
+          setlocal conceallevel=0
+      endif
+  endfunction
+  nnoremap <silent> <C-c><C-y> :call ToggleConcealLevel()<CR>
+
+  syntax keyword pyStatement lambda conceal cchar=λ
 endif
 
 if has('autocmd')

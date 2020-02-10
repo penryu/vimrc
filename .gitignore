@@ -1,3 +1,4 @@
 .netrwhist
 plugs/
 plug.vim.old
+.mypy_cache/
