@@ -11,6 +11,7 @@ set nobackup backupcopy=auto nowritebackup
 set cmdheight=2
 set colorcolumn=81,+1
 set noconfirm
+set cursorline
 set display=uhex
 set errorbells
 set expandtab
@@ -114,8 +115,18 @@ Plug 'jlanzarotta/bufexplorer'
   let g:bufExplorerSortBy='name'
   let g:bufExplorerSplitType=''
 
+Plug 'jceb/vim-orgmode'
+  let g:org_agenda_files=['~/Dropbox/org/inbox.org']
+
 Plug 'majutsushi/tagbar'
   nmap <Leader>tb :TagbarToggle<CR>
+
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+  let g:airline_powerline_fonts=1
+  let g:airline_skip_empty_sections=1
+  let g:airline#parts#ffenc#skip_expected_string='utf-8[unix]'
+  let g:airline_theme='distinguished'
 
 "Plug 'neoclide/coc.nvim', {'branch': 'master'}
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -207,17 +218,13 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
     nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
   endif
 
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-  let g:airline_powerline_fonts=1
-  let g:airline_skip_empty_sections=1
-  let g:airline#parts#ffenc#skip_expected_string='utf-8[unix]'
-  let g:airline_theme='distinguished'
-
+Plug 'inkarkat/vim-SyntaxRange'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-obsession'
+Plug 'tpope/vim-speeddating'
 Plug 'sheerun/vim-polyglot'
 Plug 'machakann/vim-sandwich'
+Plug 'vim-scripts/utl.vim'
 
 " clojure
 Plug 'Olical/conjure', { 'tag': 'v2.1.2', 'do': 'bin/compile' }
