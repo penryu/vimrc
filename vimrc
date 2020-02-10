@@ -231,6 +231,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
   endif
 
 Plug 'inkarkat/vim-SyntaxRange'
+Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-obsession'
 Plug 'tpope/vim-speeddating'
