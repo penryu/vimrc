@@ -241,9 +241,9 @@ Plug 'vim-scripts/utl.vim'
 
 " clojure
 Plug 'Olical/conjure', { 'tag': 'v2.1.2', 'do': 'bin/compile' }
-  let g:conjure_log_blacklist = ["up", "ret", "ret-multiline", "load-file", "eval"]
-  let g:conjure_log_direction = "horizontal"
-  let g:conjure_log_size_small = 33
+  let g:conjure_log_blacklist = ["eval", "load-file", "ret", "ret-multiline", "up"]
+  let g:conjure_log_direction = "vertical"
+  let g:conjure_log_size_small = 20
   call add(g:coc_global_extensions, 'coc-conjure')
 Plug 'vim-scripts/paredit.vim'
   let g:paredit_smartjump = 1
