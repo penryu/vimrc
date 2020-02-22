@@ -49,47 +49,59 @@ set wildmenu
 
 
 if has("syntax")
-  syntax on
-  if &t_Co > 2 || has("gui_running")
-    if &t_Co >= 256
-      colorscheme apprentice
-    else
-      colorscheme apprentice
+    syntax on
+    if &t_Co > 2 || has("gui_running")
+        if &t_Co >= 256
+            colorscheme apprentice
+        else
+            colorscheme apprentice
+        endif
     endif
-  endif
 
-  function! ToggleConcealLevel()
-      if &conceallevel == 0
-          setlocal conceallevel=2
-      else
-          setlocal conceallevel=0
-      endif
-  endfunction
-  nnoremap <silent> <C-c><C-y> :call ToggleConcealLevel()<CR>
+    function! ToggleConcealLevel()
+        if &conceallevel == 0
+            setlocal conceallevel=2
+        else
+            setlocal conceallevel=0
+        endif
+    endfunction
+    nnoremap <silent> <C-c><C-y> :call ToggleConcealLevel()<CR>
 
-  syntax keyword pyStatement lambda conceal cchar=λ
+    syntax keyword pyStatement lambda conceal cchar=λ
 endif
 
 if has('autocmd')
-  function! ResizeHook()
-    let l:numbered_cols = 80 + &numberwidth
-    if &columns >= l:numbered_cols
-      set number
-    else
-      set nonumber
-    endif
-  endf
-  "autocmd! VimEnter   * call ResizeHook()
-  "autocmd! VimResized * call ResizeHook()
+    filetype plugin indent on
 
-  filetype plugin indent on
+    "" filetype settings
+    autocmd! FileType gitcommit setl tw=72
+    autocmd! FileType go        setl sts=0 sw=0 ts=4 noexpandtab
+    autocmd! FileType mail      setl tw=70 com+=n:> noml
+    autocmd! FileType markdown  setl conceallevel=0 spell
+    autocmd! FileType perl      setl ep=perltidy\ -st
+    autocmd! FileType vim       setl sts=2 sw=2
 
-  "" filetype settings
-  autocmd! FileType gitcommit setl tw=72
-  autocmd! FileType go        setl sts=0 sw=0 ts=4 noexpandtab
-  autocmd! FileType mail      setl tw=70 com+=n:> noml
-  autocmd! FileType perl      setl ep=perltidy\ -st
-  autocmd! FileType vim       setl sts=2 sw=2
+    " add gutter when buffer is large enough
+    function! ResizeHook()
+        let l:numbered_cols = 80 + &numberwidth
+        if &columns >= l:numbered_cols
+            set number
+        else
+            set nonumber
+        endif
+    endf
+    "autocmd! VimEnter   * call ResizeHook()
+    "autocmd! VimResized * call ResizeHook()
+
+    " add color column (margin indicator) only if modifiable
+    function! ModifiableHook()
+        if !&modifiable
+            set colorcolumn=""
+        else
+            set colorcolumn=81,+1
+        endif
+    endfunction
+    autocmd! BufEnter *         call ModifiableHook()
 endif
 
 "let mapleader = "\\"
@@ -124,111 +136,112 @@ cabbr <expr> %% expand('%:p:h')
 
 call plug#begin('~/.vim/plugs')
 Plug 'jlanzarotta/bufexplorer'
-  let g:bufExplorerSortBy='name'
-  let g:bufExplorerSplitType=''
+    let g:bufExplorerSortBy='name'
+    let g:bufExplorerSplitType=''
 
 Plug 'jceb/vim-orgmode'
-  let g:org_agenda_files=['~/Dropbox/org/inbox.org']
+    let g:org_agenda_files=['~/Dropbox/org/inbox.org']
 
 Plug 'majutsushi/tagbar'
-  nmap <Leader>tb :TagbarToggle<CR>
+    let g:tagbar_left=v:true
+    nmap <Leader>tb :TagbarToggle<CR>
 
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-  let g:airline_powerline_fonts=1
-  let g:airline_skip_empty_sections=1
-  let g:airline#parts#ffenc#skip_expected_string='utf-8[unix]'
-  let g:airline_theme='distinguished'
+    let g:airline_powerline_fonts=v:true
+    let g:airline_skip_empty_sections=v:true
+    let g:airline#parts#ffenc#skip_expected_string='utf-8[unix]'
+    let g:airline_theme='distinguished'
 
 "Plug 'neoclide/coc.nvim', {'branch': 'master'}
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-  let g:coc_global_extensions = ['coc-css', 'coc-html', 'coc-yaml']
-  if 1
-    " coc stuff - seems to need a lot of crap
-    " Use tab for trigger completion with characters ahead and navigate.
-    " Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
-    inoremap <silent><expr> <TAB>
-          \ pumvisible() ? "\<C-n>" :
-          \ <SID>check_back_space() ? "\<TAB>" :
-          \ coc#refresh()
-    inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-    function! s:check_back_space() abort
-      let col = col('.') - 1
-      return !col || getline('.')[col - 1]  =~# '\s'
-    endfunction
-    " Use <c-space> to trigger completion.
-    inoremap <silent><expr> <c-space> coc#refresh()
-    " Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
-    " Coc only does snippet and additional edit on confirm.
-    inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-    " Or use `complete_info` if your vim support it, like:
-    " inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
-    " Use `[g` and `]g` to navigate diagnostics
-    nmap <silent> [g <Plug>(coc-diagnostic-prev)
-    nmap <silent> ]g <Plug>(coc-diagnostic-next)
-    " Remap keys for gotos
-    nmap <silent> gd <Plug>(coc-definition)
-    nmap <silent> gy <Plug>(coc-type-definition)
-    nmap <silent> gi <Plug>(coc-implementation)
-    nmap <silent> gr <Plug>(coc-references)
-    " Use K to show documentation in preview window
-    nnoremap <silent> K :call <SID>show_documentation()<CR>
-    function! s:show_documentation()
-      if (index(['vim','help'], &filetype) >= 0)
-        execute 'h '.expand('<cword>')
-      else
-        call CocAction('doHover')
-      endif
-    endfunction
-    " Highlight symbol under cursor on CursorHold
-    autocmd CursorHold * silent call CocActionAsync('highlight')
-    " Remap for rename current word
-    nmap <leader>rn <Plug>(coc-rename)
-    " Remap for format selected region
-    xmap <leader>f  <Plug>(coc-format-selected)
-    nmap <leader>f  <Plug>(coc-format-selected)
-    augroup mygroup
-      autocmd!
-      " Setup formatexpr specified filetype(s).
-      autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
-      " Update signature help on jump placeholder
-      autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
-    augroup end
-    " Remap for do codeAction of selected region, ex: `<leader>aap` for current paragraph
-    xmap <leader>a  <Plug>(coc-codeaction-selected)
-    nmap <leader>a  <Plug>(coc-codeaction-selected)
-    " Remap for do codeAction of current line
-    nmap <leader>ac  <Plug>(coc-codeaction)
-    " Fix autofix problem of current line
-    nmap <leader>qf  <Plug>(coc-fix-current)
-    " Create mappings for function text object, requires document symbols feature of languageserver.
-    xmap if <Plug>(coc-funcobj-i)
-    xmap af <Plug>(coc-funcobj-a)
-    omap if <Plug>(coc-funcobj-i)
-    omap af <Plug>(coc-funcobj-a)
-    " Use <TAB> for select selections ranges, needs server support, like: coc-tsserver, coc-python
-    nmap <silent> <TAB> <Plug>(coc-range-select)
-    xmap <silent> <TAB> <Plug>(coc-range-select)
-    " Use `:Format` to format current buffer
-    command! -nargs=0 Format :call CocAction('format')
-    " Use `:Fold` to fold current buffer
-    command! -nargs=? Fold :call     CocAction('fold', <f-args>)
-    " use `:OR` for organize import of current buffer
-    command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
-    " Add status line support, for integration with other plugin, checkout `:h coc-status`
-    set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
-    " Using CocList
-    nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
-    nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
-    nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
-    nnoremap <silent> <space>j  :<C-u>CocNext<CR>
-    nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
-    nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
-    " Find symbol of current document
-    nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
-    " Search workspace symbols
-    nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
-  endif
+    let g:coc_global_extensions = ['coc-css', 'coc-html', 'coc-yaml']
+    if v:true
+        " coc stuff - seems to need a lot of crap
+        " Use tab for trigger completion with characters ahead and navigate.
+        " Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
+        inoremap <silent><expr> <TAB>
+                    \ pumvisible() ? "\<C-n>" :
+                    \ <SID>check_back_space() ? "\<TAB>" :
+                    \ coc#refresh()
+        inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+        function! s:check_back_space() abort
+            let col = col('.') - 1
+            return !col || getline('.')[col - 1]  =~# '\s'
+        endfunction
+        " Use <c-space> to trigger completion.
+        inoremap <silent><expr> <c-space> coc#refresh()
+        " Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
+        " Coc only does snippet and additional edit on confirm.
+        inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+        " Or use `complete_info` if your vim support it, like:
+        " inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+        " Use `[g` and `]g` to navigate diagnostics
+        nmap <silent> [g <Plug>(coc-diagnostic-prev)
+        nmap <silent> ]g <Plug>(coc-diagnostic-next)
+        " Remap keys for gotos
+        nmap <silent> gd <Plug>(coc-definition)
+        nmap <silent> gy <Plug>(coc-type-definition)
+        nmap <silent> gi <Plug>(coc-implementation)
+        nmap <silent> gr <Plug>(coc-references)
+        " Use K to show documentation in preview window
+        nnoremap <silent> K :call <SID>show_documentation()<CR>
+        function! s:show_documentation()
+            if (index(['vim','help'], &filetype) >= 0)
+                execute 'h '.expand('<cword>')
+            else
+                call CocAction('doHover')
+            endif
+        endfunction
+        " Highlight symbol under cursor on CursorHold
+        autocmd CursorHold * silent call CocActionAsync('highlight')
+        " Remap for rename current word
+        nmap <leader>rn <Plug>(coc-rename)
+        " Remap for format selected region
+        xmap <leader>f  <Plug>(coc-format-selected)
+        nmap <leader>f  <Plug>(coc-format-selected)
+        augroup mygroup
+            autocmd!
+            " Setup formatexpr specified filetype(s).
+            autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+            " Update signature help on jump placeholder
+            autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+        augroup end
+        " Remap for do codeAction of selected region, ex: `<leader>aap` for current paragraph
+        xmap <leader>a  <Plug>(coc-codeaction-selected)
+        nmap <leader>a  <Plug>(coc-codeaction-selected)
+        " Remap for do codeAction of current line
+        nmap <leader>ac  <Plug>(coc-codeaction)
+        " Fix autofix problem of current line
+        nmap <leader>qf  <Plug>(coc-fix-current)
+        " Create mappings for function text object, requires document symbols feature of languageserver.
+        xmap if <Plug>(coc-funcobj-i)
+        xmap af <Plug>(coc-funcobj-a)
+        omap if <Plug>(coc-funcobj-i)
+        omap af <Plug>(coc-funcobj-a)
+        " Use <TAB> for select selections ranges, needs server support, like: coc-tsserver, coc-python
+        nmap <silent> <TAB> <Plug>(coc-range-select)
+        xmap <silent> <TAB> <Plug>(coc-range-select)
+        " Use `:Format` to format current buffer
+        command! -nargs=0 Format :call CocAction('format')
+        " Use `:Fold` to fold current buffer
+        command! -nargs=? Fold :call     CocAction('fold', <f-args>)
+        " use `:OR` for organize import of current buffer
+        command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
+        " Add status line support, for integration with other plugin, checkout `:h coc-status`
+        set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+        " Using CocList
+        nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
+        nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
+        nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
+        nnoremap <silent> <space>j  :<C-u>CocNext<CR>
+        nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
+        nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+        " Find symbol of current document
+        nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
+        " Search workspace symbols
+        nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
+    endif
 
 Plug 'inkarkat/vim-SyntaxRange'
 Plug 'tpope/vim-commentary'
@@ -241,35 +254,36 @@ Plug 'vim-scripts/utl.vim'
 
 " clojure
 Plug 'Olical/conjure', { 'tag': 'v2.1.2', 'do': 'bin/compile' }
-  let g:conjure_log_blacklist = ["eval", "load-file", "ret", "ret-multiline", "up"]
-  let g:conjure_log_direction = "vertical"
-  let g:conjure_log_size_small = 20
-  call add(g:coc_global_extensions, 'coc-conjure')
+    let g:conjure_log_auto_close = v:false
+    let g:conjure_log_blacklist = ["eval", "load-file", "ret", "ret-multiline", "up"]
+    let g:conjure_log_direction = "vertical"
+    let g:conjure_log_size_small = 30
+    call add(g:coc_global_extensions, 'coc-conjure')
 Plug 'vim-scripts/paredit.vim'
-  let g:paredit_smartjump = 1
+    let g:paredit_smartjump = v:true
 
 " go
 Plug 'fatih/vim-go', {'do': ':GoUpdateBinaries'}
-  au FileType go call PareditInitBuffer()
+    au FileType go call PareditInitBuffer()
 
 " java/kotlin
 Plug 'udalov/kotlin-vim'
-  call add(g:coc_global_extensions, 'coc-java')
+    call add(g:coc_global_extensions, 'coc-java')
 
 " js
 Plug 'pangloss/vim-javascript'
-  let g:javascript_plugin_jsdoc = 1
-  call add(g:coc_global_extensions, 'coc-eslint')
+    let g:javascript_plugin_jsdoc = v:true
+    call add(g:coc_global_extensions, 'coc-eslint')
 Plug 'elzr/vim-json'
-  let g:vim_json_syntax_conceal = 1
-  call add(g:coc_global_extensions, 'coc-json')
+    let g:vim_json_syntax_conceal = v:true
+    call add(g:coc_global_extensions, 'coc-json')
 Plug 'leafgarland/typescript-vim'
 Plug 'ianks/vim-tsx'
-  call add(g:coc_global_extensions, 'coc-tslint')
-  call add(g:coc_global_extensions, 'coc-tsserver')
+    call add(g:coc_global_extensions, 'coc-tslint')
+    call add(g:coc_global_extensions, 'coc-tsserver')
 
 " python
-  call add(g:coc_global_extensions, 'coc-python')
+    call add(g:coc_global_extensions, 'coc-python')
 
 " rust
 Plug 'rust-lang/rust.vim'
