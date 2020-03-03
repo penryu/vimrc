@@ -260,6 +260,7 @@ Plug 'Olical/conjure', { 'tag': 'v2.1.2', 'do': 'bin/compile' }
     let g:conjure_log_direction = "vertical"
     let g:conjure_log_size_small = 30
     call add(g:coc_global_extensions, 'coc-conjure')
+
 Plug 'vim-scripts/paredit.vim'
     let g:paredit_smartjump = v:true
 
