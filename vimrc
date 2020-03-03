@@ -8,6 +8,7 @@ set autoread
 set background=dark
 set backspace=eol,indent,start
 set nobackup backupcopy=auto nowritebackup
+set clipboard+=unnamed
 set cmdheight=2
 set colorcolumn=81,+1
 set conceallevel=2
