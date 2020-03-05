@@ -258,6 +258,7 @@ Plug 'Olical/conjure', { 'tag': 'v2.1.2', 'do': 'bin/compile' }
     let g:conjure_log_auto_close = v:false
     let g:conjure_log_blacklist = ["eval", "load-file", "ret", "ret-multiline", "up"]
     let g:conjure_log_direction = "vertical"
+    let g:conjure_log_size_large = 40
     let g:conjure_log_size_small = 30
     call add(g:coc_global_extensions, 'coc-conjure')
 
