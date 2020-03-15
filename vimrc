@@ -244,6 +244,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
         nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
     endif
 
+Plug 'dense-analysis/ale'
 Plug 'inkarkat/vim-SyntaxRange'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
@@ -255,11 +256,12 @@ Plug 'vim-scripts/utl.vim'
 
 " clojure
 Plug 'Olical/conjure', { 'tag': 'v2.1.2', 'do': 'bin/compile' }
-    let g:conjure_log_auto_close = v:false
+    let g:ale_linters = {'clojure': ['clj-kondo']}
+    let g:conjure_log_auto_close = v:true
     let g:conjure_log_blacklist = ["eval", "load-file", "ret", "ret-multiline", "up"]
-    let g:conjure_log_direction = "vertical"
-    let g:conjure_log_size_large = 40
-    let g:conjure_log_size_small = 30
+    let g:conjure_log_direction = "horizontal"
+    let g:conjure_log_size_large = 42
+    let g:conjure_log_size_small = 15
     call add(g:coc_global_extensions, 'coc-conjure')
 
 Plug 'vim-scripts/paredit.vim'
