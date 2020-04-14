@@ -253,6 +253,7 @@ Plug 'tpope/vim-speeddating'
 Plug 'sheerun/vim-polyglot'
 Plug 'machakann/vim-sandwich'
 Plug 'vim-scripts/utl.vim'
+Plug 'bronson/vim-trailing-whitespace'
 
 " clojure
 Plug 'Olical/conjure', { 'tag': 'v2.1.2', 'do': 'bin/compile' }
