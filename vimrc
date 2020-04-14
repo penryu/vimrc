@@ -140,8 +140,8 @@ Plug 'jlanzarotta/bufexplorer'
     let g:bufExplorerSortBy='name'
     let g:bufExplorerSplitType=''
 
-Plug 'jceb/vim-orgmode'
-    let g:org_agenda_files=['~/Dropbox/org/inbox.org']
+"Plug 'jceb/vim-orgmode'
+    "let g:org_agenda_files=['~/Dropbox/org/inbox.org']
 
 Plug 'majutsushi/tagbar'
     let g:tagbar_left=v:true
