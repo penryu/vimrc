@@ -18,7 +18,7 @@ set display=uhex
 set errorbells
 set expandtab
 set fileformats=unix,dos
-set foldlevel=20 foldlevelstart=20
+set foldlevelstart=20
 set foldmethod=indent
 set nohlsearch
 set ignorecase
@@ -41,7 +41,7 @@ set softtabstop=4
 set splitbelow
 set terse
 set textwidth=80
-set timeout nottimeout timeoutlen=1000 ttimeoutlen=100
+set timeout nottimeout timeoutlen=200 ttimeoutlen=10
 set updatetime=300
 set viminfo='7,r/Volumes,r/media,r/mnt,r/tmp
 set virtualedit=block
@@ -78,7 +78,7 @@ if has('autocmd')
     autocmd! FileType gitcommit setl tw=72
     autocmd! FileType go        setl sts=0 sw=0 ts=4 noexpandtab
     autocmd! FileType mail      setl tw=70 com+=n:> noml
-    autocmd! FileType markdown  setl conceallevel=0 spell
+    autocmd! FileType markdown  setl spell
     autocmd! FileType perl      setl ep=perltidy\ -st
     autocmd! FileType vim       setl sts=2 sw=2
 
@@ -140,8 +140,13 @@ Plug 'jlanzarotta/bufexplorer'
     let g:bufExplorerSortBy='name'
     let g:bufExplorerSplitType=''
 
-"Plug 'jceb/vim-orgmode'
-    "let g:org_agenda_files=['~/Dropbox/org/inbox.org']
+Plug 'jceb/vim-orgmode'
+    let g:org_agenda_files=['~/Dropbox/org/inbox.org']
+    let g:org_aggressive_conceal = 0
+
+Plug 'blindFS/vim-taskwarrior'
+    let task_gui_term = 1
+    let g:markdown_folding=1
 
 Plug 'majutsushi/tagbar'
     let g:tagbar_left=v:true
@@ -293,6 +298,7 @@ Plug 'ianks/vim-tsx'
 
 " rust
 Plug 'rust-lang/rust.vim'
+    call add(g:coc_global_extensions, 'coc-rust-analyzer')
 
 call plug#end()
 
