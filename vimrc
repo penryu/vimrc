@@ -19,7 +19,6 @@ set errorbells
 set expandtab
 set fileformats=unix,dos
 set foldlevelstart=20
-set foldmethod=indent
 set nohlsearch
 set ignorecase
 set incsearch
@@ -41,7 +40,7 @@ set softtabstop=4
 set splitbelow
 set terse
 set textwidth=80
-set timeout nottimeout timeoutlen=200 ttimeoutlen=10
+set notimeout ttimeout timeoutlen=200 ttimeoutlen=10
 set updatetime=300
 set viminfo='7,r/Volumes,r/media,r/mnt,r/tmp
 set virtualedit=block
@@ -249,16 +248,17 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
         nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
     endif
 
+Plug 'airblade/vim-gitgutter'
+Plug 'bronson/vim-trailing-whitespace'
 Plug 'dense-analysis/ale'
 Plug 'inkarkat/vim-SyntaxRange'
+Plug 'machakann/vim-sandwich'
+Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-obsession'
 Plug 'tpope/vim-speeddating'
-Plug 'sheerun/vim-polyglot'
-Plug 'machakann/vim-sandwich'
 Plug 'vim-scripts/utl.vim'
-Plug 'bronson/vim-trailing-whitespace'
 
 " clojure
 Plug 'Olical/conjure', { 'tag': 'v2.1.2', 'do': 'bin/compile' }
