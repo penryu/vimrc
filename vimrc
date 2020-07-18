@@ -40,7 +40,7 @@ set softtabstop=4
 set splitbelow
 set terse
 set textwidth=80
-set notimeout ttimeout timeoutlen=200 ttimeoutlen=10
+set timeout nottimeout timeoutlen=500 ttimeoutlen=10
 set updatetime=300
 set viminfo='7,r/Volumes,r/media,r/mnt,r/tmp
 set virtualedit=block
@@ -251,6 +251,8 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'airblade/vim-gitgutter'
 Plug 'bronson/vim-trailing-whitespace'
 Plug 'dense-analysis/ale'
+Plug 'luochen1990/rainbow'
+    let g:rainbow_active = 1
 Plug 'inkarkat/vim-SyntaxRange'
 Plug 'machakann/vim-sandwich'
 Plug 'sheerun/vim-polyglot'
