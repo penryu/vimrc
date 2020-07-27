@@ -263,7 +263,7 @@ Plug 'tpope/vim-speeddating'
 Plug 'vim-scripts/utl.vim'
 
 " clojure
-Plug 'Olical/conjure', { 'tag': 'v2.1.2', 'do': 'bin/compile' }
+Plug 'Olical/conjure', { 'tag': 'v4.1.0'}
     let g:ale_linters = {'clojure': ['clj-kondo']}
     let g:conjure_log_auto_close = v:true
     let g:conjure_log_blacklist = ["eval", "load-file", "ret", "ret-multiline", "up"]
