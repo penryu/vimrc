@@ -47,6 +47,9 @@ set virtualedit=block
 set visualbell
 set wildmenu
 
+let mapleader = "\\"
+let maplocalleader = ","
+
 
 if has("syntax")
     syntax on
@@ -104,8 +107,6 @@ if has('autocmd')
     autocmd! BufEnter *         call ModifiableHook()
 endif
 
-"let mapleader = "\\"
-let mapleader = ","
 " Y yanks to EOL, like C/D
 nmap Y y$
 " navigate open windows
@@ -257,12 +258,15 @@ Plug 'inkarkat/vim-SyntaxRange'
 Plug 'machakann/vim-sandwich'
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-obsession'
 Plug 'tpope/vim-speeddating'
 Plug 'vim-scripts/utl.vim'
 
 " clojure
+Plug 'radenling/vim-dispatch-neovim'
+Plug 'clojure-vim/vim-jack-in'
 Plug 'Olical/conjure', { 'tag': 'v4.1.0'}
     let g:ale_linters = {'clojure': ['clj-kondo']}
     let g:conjure_log_auto_close = v:true
@@ -274,6 +278,7 @@ Plug 'Olical/conjure', { 'tag': 'v4.1.0'}
 
 Plug 'vim-scripts/paredit.vim'
     let g:paredit_smartjump = v:true
+    let g:paredit_leader = ","
 
 " go
 Plug 'fatih/vim-go', {'do': ':GoUpdateBinaries'}
