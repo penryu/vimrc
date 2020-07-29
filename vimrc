@@ -50,7 +50,6 @@ set wildmenu
 let mapleader = "\\"
 let maplocalleader = ","
 
-
 if has("syntax")
     syntax on
     if &t_Co > 2 || has("gui_running")
@@ -269,11 +268,6 @@ Plug 'radenling/vim-dispatch-neovim'
 Plug 'clojure-vim/vim-jack-in'
 Plug 'Olical/conjure', { 'tag': 'v4.1.0'}
     let g:ale_linters = {'clojure': ['clj-kondo']}
-    let g:conjure_log_auto_close = v:true
-    let g:conjure_log_blacklist = ["eval", "load-file", "ret", "ret-multiline", "up"]
-    let g:conjure_log_direction = "horizontal"
-    let g:conjure_log_size_large = 42
-    let g:conjure_log_size_small = 15
     call add(g:coc_global_extensions, 'coc-conjure')
 
 Plug 'vim-scripts/paredit.vim'
