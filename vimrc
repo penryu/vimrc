@@ -251,8 +251,6 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'airblade/vim-gitgutter'
 Plug 'bronson/vim-trailing-whitespace'
 Plug 'dense-analysis/ale'
-Plug 'luochen1990/rainbow'
-    let g:rainbow_active = 1
 Plug 'inkarkat/vim-SyntaxRange'
 Plug 'machakann/vim-sandwich'
 Plug 'sheerun/vim-polyglot'
@@ -266,7 +264,7 @@ Plug 'vim-scripts/utl.vim'
 " clojure
 Plug 'radenling/vim-dispatch-neovim'
 Plug 'clojure-vim/vim-jack-in'
-Plug 'Olical/conjure', { 'tag': 'v4.1.0'}
+Plug 'Olical/conjure', { 'tag': 'v4.2.0'}
     let g:ale_linters = {'clojure': ['clj-kondo']}
     call add(g:coc_global_extensions, 'coc-conjure')
 
