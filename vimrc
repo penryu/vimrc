@@ -143,10 +143,6 @@ Plug 'jceb/vim-orgmode'
     let g:org_agenda_files=['~/Dropbox/org/inbox.org']
     let g:org_aggressive_conceal = 0
 
-Plug 'blindFS/vim-taskwarrior'
-    let task_gui_term = 1
-    let g:markdown_folding=1
-
 Plug 'majutsushi/tagbar'
     let g:tagbar_left=v:true
     nmap <Leader>tb :TagbarToggle<CR>
