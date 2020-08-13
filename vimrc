@@ -260,7 +260,7 @@ Plug 'vim-scripts/utl.vim'
 " clojure
 Plug 'radenling/vim-dispatch-neovim'
 Plug 'clojure-vim/vim-jack-in'
-Plug 'Olical/conjure', { 'tag': 'v4.3.0'}
+Plug 'Olical/conjure', { 'tag': 'v4.3.1'}
     let g:ale_linters = {'clojure': ['clj-kondo']}
     call add(g:coc_global_extensions, 'coc-conjure')
 
