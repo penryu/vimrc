@@ -12,6 +12,11 @@
     "suggest.noselect": true,
     "suggest.removeDuplicateItems": true,
     "languageserver":{
+        "golang": {
+            "command": "gopls",
+            "rootPatterns": ["go.mod", ".vim/", ".git/"],
+            "filetypes": ["go"]
+        },
         "kotlin": {
             "command": "~/.config/nvim/server/bin/kotlin-language-server",
             "filetypes": ["kotlin"]
