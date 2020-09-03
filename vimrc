@@ -272,8 +272,7 @@ Plug 'vim-scripts/paredit.vim'
 Plug 'fatih/vim-go', {'do': ':GoUpdateBinaries'}
     au FileType go call PareditInitBuffer()
 
-" java/kotlin
-Plug 'udalov/kotlin-vim'
+" java
     call add(g:coc_global_extensions, 'coc-java')
 
 " js
@@ -294,6 +293,9 @@ Plug 'ianks/vim-tsx'
 " rust
 Plug 'rust-lang/rust.vim'
     call add(g:coc_global_extensions, 'coc-rust-analyzer')
+
+" scala
+    call add(g:coc_global_extensions, 'coc-metals')
 
 call plug#end()
 
