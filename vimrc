@@ -82,6 +82,7 @@ if has('autocmd')
     autocmd! FileType markdown  setl spell
     autocmd! FileType perl      setl ep=perltidy\ -st
     autocmd! FileType vim       setl sts=2 sw=2
+    autocmd! FileType yaml      setl sts=2 sw=2
 
     " add gutter when buffer is large enough
     function! ResizeHook()
