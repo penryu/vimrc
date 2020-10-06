@@ -84,6 +84,12 @@ if has('autocmd')
     autocmd! FileType vim       setl sts=2 sw=2
     autocmd! FileType yaml      setl sts=2 sw=2
 
+    " https://unix.stackexchange.com/a/383044
+    autocmd! FocusGained,BufEnter,CursorHold,CursorHoldI *
+          \ if mode() !~ '\v(c|r.?|!|t)' && getcmdwintype() == '' | checktime | endif
+    autocmd! FileChangedShellPost *
+          \ echohl WarningMsg | echo "File changed on disk. Buffer reloaded." | echohl None
+
     " add gutter when buffer is large enough
     function! ResizeHook()
         let l:numbered_cols = 80 + &numberwidth
