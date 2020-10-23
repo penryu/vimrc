@@ -29,14 +29,14 @@ set nonumber
 set pumheight=7
 set ruler
 set scrolloff=3
-set shiftwidth=4
+set shiftwidth=2
 set shortmess=acotI
 set sidescroll=1
 set sidescrolloff=21
 set signcolumn=yes
 set nosmartindent
 set nosmarttab
-set softtabstop=4
+set softtabstop=2
 set splitbelow
 set terse
 set textwidth=80
@@ -76,13 +76,12 @@ if has('autocmd')
     filetype plugin indent on
 
     "" filetype settings
-    autocmd! FileType gitcommit setl tw=72
-    autocmd! FileType go        setl sts=0 sw=0 ts=4 noexpandtab
-    autocmd! FileType mail      setl tw=70 com+=n:> noml
-    autocmd! FileType markdown  setl spell
-    autocmd! FileType perl      setl ep=perltidy\ -st
-    autocmd! FileType vim       setl sts=2 sw=2
-    autocmd! FileType yaml      setl sts=2 sw=2
+    autocmd! FileType gitcommit   setl tw=72
+    autocmd! FileType go          setl sts=0 sw=0 ts=4 noexpandtab
+    autocmd! FileType javascript  setl sts=2 sw=2 ts=8
+    autocmd! FileType mail        setl tw=70 com+=n:> noml
+    autocmd! FileType markdown    setl spell
+    autocmd! FileType perl        setl sts=4 sw=4 ep=perltidy\ -st
 
     " https://unix.stackexchange.com/a/383044
     autocmd! FocusGained,BufEnter,CursorHold,CursorHoldI *
