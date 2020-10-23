@@ -38,9 +38,10 @@ set nosmartindent
 set nosmarttab
 set softtabstop=2
 set splitbelow
+set termguicolors
 set terse
 set textwidth=80
-set timeout nottimeout timeoutlen=500 ttimeoutlen=10
+set timeout nottimeout timeoutlen=300 ttimeoutlen=10
 set updatetime=300
 set viminfo='7,r/Volumes,r/media,r/mnt,r/tmp
 set virtualedit=block
