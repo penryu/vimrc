@@ -110,7 +110,8 @@ if has('autocmd')
             set colorcolumn=81,+1
         endif
     endfunction
-    autocmd! BufEnter *         call ModifiableHook()
+    autocmd! BufEnter * call ModifiableHook()
+    autocmd! VimEnter * NERDTree
 endif
 
 " Y yanks to EOL, like C/D
@@ -145,6 +146,9 @@ call plug#begin('~/.vim/plugs')
 Plug 'jlanzarotta/bufexplorer'
     let g:bufExplorerSortBy='name'
     let g:bufExplorerSplitType=''
+
+Plug 'preservim/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
 
 Plug 'jceb/vim-orgmode'
     let g:org_agenda_files=['~/Dropbox/org/inbox.org']
