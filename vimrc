@@ -111,7 +111,7 @@ if has('autocmd')
         endif
     endfunction
     autocmd! BufEnter * call ModifiableHook()
-    autocmd! VimEnter * NERDTree
+    "autocmd! VimEnter * NERDTree
 endif
 
 " Y yanks to EOL, like C/D
@@ -155,7 +155,6 @@ Plug 'jceb/vim-orgmode'
     let g:org_aggressive_conceal = 0
 
 Plug 'majutsushi/tagbar'
-    let g:tagbar_left=v:true
     nmap <Leader>tb :TagbarToggle<CR>
 
 Plug 'vim-airline/vim-airline'
