@@ -151,10 +151,6 @@ Plug 'jlanzarotta/bufexplorer'
 Plug 'preservim/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 
-Plug 'jceb/vim-orgmode'
-    let g:org_agenda_files=['~/Dropbox/org/inbox.org']
-    let g:org_aggressive_conceal = 0
-
 Plug 'majutsushi/tagbar'
     nmap <Leader>tb :TagbarToggle<CR>
 
