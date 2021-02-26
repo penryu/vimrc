@@ -291,7 +291,6 @@ Plug 'elzr/vim-json'
     call add(g:coc_global_extensions, 'coc-json')
 Plug 'leafgarland/typescript-vim'
 Plug 'ianks/vim-tsx'
-    call add(g:coc_global_extensions, 'coc-tslint')
     call add(g:coc_global_extensions, 'coc-tsserver')
 
 " python
