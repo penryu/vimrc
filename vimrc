@@ -156,7 +156,6 @@ Plug 'vim-airline/vim-airline-themes'
     let g:airline#parts#ffenc#skip_expected_string='utf-8[unix]'
     let g:airline_theme='distinguished'
 
-"Plug 'neoclide/coc.nvim', {'branch': 'master'}
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
     let g:coc_global_extensions = ['coc-css', 'coc-html', 'coc-yaml']
     if v:true
@@ -262,7 +261,7 @@ Plug 'vim-scripts/utl.vim'
 " clojure
 Plug 'radenling/vim-dispatch-neovim'
 Plug 'clojure-vim/vim-jack-in'
-Plug 'Olical/conjure', { 'tag': 'v4.3.1'}
+Plug 'Olical/conjure', { 'tag': 'v4.15.0'}
     let g:ale_linters = {'clojure': ['clj-kondo']}
     call add(g:coc_global_extensions, 'coc-conjure')
 
