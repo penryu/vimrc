@@ -91,18 +91,6 @@ if has('autocmd')
     autocmd! FileChangedShellPost *
           \ echohl WarningMsg | echo "File changed on disk. Buffer reloaded." | echohl None
 
-    " add gutter when buffer is large enough
-    function! ResizeHook()
-        let l:numbered_cols = 80 + &numberwidth
-        if &columns >= l:numbered_cols
-            set number
-        else
-            set nonumber
-        endif
-    endf
-    "autocmd! VimEnter   * call ResizeHook()
-    "autocmd! VimResized * call ResizeHook()
-
     " add color column (margin indicator) only if modifiable
     function! ModifiableHook()
         if !&modifiable
