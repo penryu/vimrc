@@ -49,8 +49,8 @@ set virtualedit=block
 set visualbell
 set wildmenu
 
-let mapleader = "\\"
-let maplocalleader = ","
+let mapleader = ","
+let maplocalleader = "\\"
 
 if has("syntax")
     syntax on
@@ -101,6 +101,10 @@ if has('autocmd')
     endfunction
     autocmd! BufEnter * call ModifiableHook()
 
+    " NERDTree init
+    autocmd StdinReadPre * let s:std_in=1
+    " Start NERDTree and put the cursor back in the other window.
+    autocmd VimEnter * NERDTree | wincmd p
     " If another buffer tries to replace NERDTree, put it in the other window, and bring back NERDTree.
     autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1 | let buf=bufnr() | buffer# | execute "normal! \<C-W>w" | execute 'buffer'.buf | endif
     " Exit Vim if NERDTree is the only window left.
@@ -142,12 +146,13 @@ Plug 'jlanzarotta/bufexplorer'
 
 Plug 'preservim/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
-    nnoremap <Leader>N :NERDTree<CR>
-    nnoremap <Leader>nt :NERDTreeToggle<CR>
-    nnoremap <Leader>nf :NERDTreeFocus<CR>
+    let g:NERDTreeWinSize=25
+    nnoremap <Leader>N :NERDTreeToggle<CR>
+    nnoremap <Leader>n :NERDTreeFocus<CR>
 
 Plug 'majutsushi/tagbar'
-    nmap <Leader>tb :TagbarToggle<CR>
+    let g:tagbar_width=25
+    nmap <Leader>t :TagbarToggle<CR>
 
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
