@@ -146,7 +146,7 @@ Plug 'jlanzarotta/bufexplorer'
 
 Plug 'preservim/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
-    let g:NERDTreeWinSize=25
+    let g:NERDTreeWinSize=32
     nnoremap <Leader>N :NERDTreeToggle<CR>
     nnoremap <Leader>n :NERDTreeFocus<CR>
 
