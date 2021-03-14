@@ -12,7 +12,7 @@ set nobackup backupcopy=yes nowritebackup
 set clipboard+=unnamed
 set cmdheight=2
 set colorcolumn=81,+1
-set conceallevel=2
+set conceallevel=0
 set noconfirm
 set cursorline
 set display=uhex
