@@ -140,6 +140,7 @@ vnoremap  <C-c> "+y
 cabbr <expr> %% expand('%:p:h')
 
 call plug#begin('~/.vim/plugs')
+
 Plug 'jlanzarotta/bufexplorer'
     let g:bufExplorerSortBy='name'
     let g:bufExplorerSplitType=''
@@ -156,10 +157,13 @@ Plug 'majutsushi/tagbar'
 
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+    let g:airline#extensions#tabline#enabled = 1
+    let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
+    let g:airline#parts#ffenc#skip_expected_string='utf-8[unix]'
     let g:airline_powerline_fonts=v:true
     let g:airline_skip_empty_sections=v:true
-    let g:airline#parts#ffenc#skip_expected_string='utf-8[unix]'
-    let g:airline_theme='distinguished'
+    let g:airline_theme = 'owo'
+
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
     let g:coc_global_extensions = ['coc-css', 'coc-html', 'coc-yaml']
