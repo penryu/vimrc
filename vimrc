@@ -164,6 +164,8 @@ Plug 'vim-airline/vim-airline-themes'
     let g:airline_skip_empty_sections=v:true
     let g:airline_theme = 'owo'
 
+Plug 'blindFS/vim-taskwarrior'
+    let g:task_rc_override = 'rc.defaultwidth=0'
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
     let g:coc_global_extensions = ['coc-css', 'coc-html', 'coc-yaml']
