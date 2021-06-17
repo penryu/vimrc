@@ -167,6 +167,10 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'blindFS/vim-taskwarrior'
     let g:task_rc_override = 'rc.defaultwidth=0'
 
+Plug 'vimwiki/vimwiki'
+    let g:vimwiki_list = [{
+        \ 'path': '~/Dropbox/Notes/','syntax': 'markdown', 'ext': '.md'}]
+
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
     let g:coc_global_extensions = ['coc-css', 'coc-html', 'coc-yaml']
     if v:true
