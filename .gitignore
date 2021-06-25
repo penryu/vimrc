@@ -1,4 +1,5 @@
 .netrwhist
-plugs/
+/plugs/
 plug.vim.old
 .mypy_cache/
+/local/
