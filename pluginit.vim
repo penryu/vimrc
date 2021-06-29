@@ -155,9 +155,10 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
     nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
     let g:coc_global_extensions = ['coc-css', 'coc-html', 'coc-yaml']
 
+Plug 'dense-analysis/ale', { 'for': ['clojure', 'sh'] }
+
 " clojure
 Plug 'machakann/vim-sandwich'
-Plug 'dense-analysis/ale', { 'for': 'clojure' }
 Plug 'tpope/vim-dispatch', { 'for': 'clojure' }
 Plug 'radenling/vim-dispatch-neovim', { 'for': 'clojure' }
 Plug 'clojure-vim/vim-jack-in', { 'for': 'clojure' }
