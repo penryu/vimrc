@@ -45,6 +45,8 @@ Plug 'preservim/nerdtree', {'on': ['NERDTreeFocus','NERDTreeToggle']}
     autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
 Plug 'Xuyuanp/nerdtree-git-plugin'
 
+Plug 'inkarkat/vim-SyntaxRange'
+
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
     " Tab to trigger completion with characters ahead and navigate.
     inoremap <silent><expr> <TAB>

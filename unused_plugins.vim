@@ -32,9 +32,6 @@
 "     let g:bufExplorerSortBy='name'
 "     let g:bufExplorerSplitType=''
 
-" https://github.com/inkarkat/vim-SyntaxRange
-" Plug 'inkarkat/vim-SyntaxRange'  " mark
-
 " https://github.com/tpope/vim-speeddating
 " Plug 'tpope/vim-speeddating'  " jit
 
