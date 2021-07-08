@@ -35,6 +35,7 @@ colorscheme apprentice
 autocmd! FileType mail       setl textwidth=69
 autocmd! FileType markdown   setl spell
 autocmd! FileType perl       setl shiftwidth=4 softtabstop=4
+autocmd! FileType tex        setl spell
 
 " Check for changes to files outside of Vim
 " https://unix.stackexchange.com/a/383044
