@@ -5,6 +5,7 @@
 let mapleader = ","
 let maplocalleader = "\\"
 
+source ~/.vim/util.vim
 source ~/.vim/pluginit.vim
 
 " backupcopy=yes when file change detection doesn't work
@@ -69,3 +70,4 @@ cabbr <expr> %% expand('%:p:h')
 
 command Tabn tab split | next
 
+call SourceIfExist("~/.vim/vimrc.local")

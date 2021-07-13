@@ -3,3 +3,4 @@
 plug.vim.old
 .mypy_cache/
 /local/
+/vimrc.local
