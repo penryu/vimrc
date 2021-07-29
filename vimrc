@@ -47,10 +47,12 @@ autocmd! FileChangedShellPost *
 
 " add color column (margin indicator) only if modifiable
 function! ModifiableHook()
-    if !&modifiable
-        set colorcolumn&
-    else
+    if &modifiable
         set colorcolumn=81,+1
+        set number
+    else
+        set colorcolumn&
+        set nonumber
     endif
 endfunction
 autocmd! BufEnter * call ModifiableHook()
