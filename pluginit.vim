@@ -1,6 +1,12 @@
 " pluginit.vim
 " Plugins and related settings, called from init.vim
 
+" Enable plugins (and their settings) by groups
+let s:plugin_clojure = 1
+let s:plugin_go = 0
+let s:plugin_nerdtree = 1
+let s:plugin_rust = 1
+
 " Open Plug window on right instead of left.
 let g:plug_window = "vertical botright new"
 
@@ -36,14 +42,16 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
     let g:airline_theme = 'owo'
 
-Plug 'preservim/nerdtree', {'on': ['NERDTreeFocus','NERDTreeToggle']}
+if s:plugin_nerdtree
+    Plug 'preservim/nerdtree', {'on': ['NERDTreeFocus','NERDTreeToggle']}
     let g:NERDTreeHijackNetrw = 0
     let g:NERDTreeWinSize=32
     nnoremap <Leader>N :NERDTreeToggle<CR>
     nnoremap <Leader>n :NERDTreeFocus<CR>
     " Exit Vim if NERDTree is the only window left.
     autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
-Plug 'Xuyuanp/nerdtree-git-plugin'
+    Plug 'Xuyuanp/nerdtree-git-plugin'
+endif
 
 Plug 'inkarkat/vim-SyntaxRange'
 
@@ -157,20 +165,24 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
     nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
     let g:coc_global_extensions = ['coc-css', 'coc-html', 'coc-yaml']
 
-Plug 'dense-analysis/ale', { 'for': ['clojure', 'sh'] }
+Plug 'dense-analysis/ale', { 'for': ['clojure', 'sh', 'zsh'] }
 
 " clojure
-Plug 'machakann/vim-sandwich'
-Plug 'tpope/vim-dispatch', { 'for': 'clojure' }
-Plug 'radenling/vim-dispatch-neovim', { 'for': 'clojure' }
-Plug 'clojure-vim/vim-jack-in', { 'for': 'clojure' }
-Plug 'Olical/conjure', { 'tag': 'v4.21.0', 'for': 'clojure' }
+if s:plugin_clojure
+    Plug 'machakann/vim-sandwich'
+    Plug 'tpope/vim-dispatch', { 'for': 'clojure' }
+    Plug 'radenling/vim-dispatch-neovim', { 'for': 'clojure' }
+    Plug 'clojure-vim/vim-jack-in', { 'for': 'clojure' }
+    Plug 'Olical/conjure', { 'tag': 'v4.21.0', 'for': 'clojure' }
     let g:ale_linters = {'clojure': ['clj-kondo']}
     call add(g:coc_global_extensions, 'coc-conjure')
+endif
 
 " go
-Plug 'fatih/vim-go', {'do': ':GoUpdateBinaries'}
+if s:plugin_go
+    Plug 'fatih/vim-go', {'do': ':GoUpdateBinaries'}
     autocmd FileType go call PareditInitBuffer()
+endif
 
 " java
     call add(g:coc_global_extensions, 'coc-java')
@@ -188,9 +200,12 @@ Plug 'ianks/vim-tsx'
 
 " python
     call add(g:coc_global_extensions, 'coc-python')
+
 " rust
-Plug 'rust-lang/rust.vim'
+if s:plugin_rust
+    Plug 'rust-lang/rust.vim'
     call add(g:coc_global_extensions, 'coc-rust-analyzer')
+endif
 
 " scala
     call add(g:coc_global_extensions, 'coc-metals')
