@@ -1,8 +1,16 @@
-" pluginit.vim
+"n pluginit.vim
 " Plugins and related settings, called from init.vim
 
+function PlugUp()
+    execute 'PlugUpgrade'
+    execute 'PlugClean'
+    execute 'PlugInstall'
+    execute 'PlugUpdate'
+endfunction
+command! -nargs=0 -bar -bang PlugUp call PlugUp()
+
 " Enable plugins (and their settings) by groups
-let s:plugin_clojure = 1
+let s:plugin_clojure = 0
 let s:plugin_go = 0
 let s:plugin_nerdtree = 1
 let s:plugin_rust = 1
@@ -16,11 +24,15 @@ Plug 'airblade/vim-gitgutter'
 Plug 'blindFS/vim-taskwarrior'
     let g:task_rc_override = 'rc.defaultwidth=0'
 Plug 'bronson/vim-trailing-whitespace'
+Plug 'dense-analysis/ale', { 'for': ['clojure', 'sh', 'zsh'] }
+Plug 'machakann/vim-sandwich'
 Plug 'majutsushi/tagbar'
     let g:tagbar_width=25
     nmap <Leader>t :TagbarToggle<CR>
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-dispatch'
+    Plug 'radenling/vim-dispatch-neovim'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-obsession'
 Plug 'tpope/vim-vinegar'
@@ -165,15 +177,10 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
     nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
     let g:coc_global_extensions = ['coc-css', 'coc-html', 'coc-yaml']
 
-Plug 'dense-analysis/ale', { 'for': ['clojure', 'sh', 'zsh'] }
-
 " clojure
 if s:plugin_clojure
-    Plug 'machakann/vim-sandwich'
-    Plug 'tpope/vim-dispatch', { 'for': 'clojure' }
-    Plug 'radenling/vim-dispatch-neovim', { 'for': 'clojure' }
     Plug 'clojure-vim/vim-jack-in', { 'for': 'clojure' }
-    Plug 'Olical/conjure', { 'tag': 'v4.21.0', 'for': 'clojure' }
+    Plug 'Olical/conjure', { 'tag': 'v4.23.0', 'for': 'clojure' }
     let g:ale_linters = {'clojure': ['clj-kondo']}
     call add(g:coc_global_extensions, 'coc-conjure')
 endif
