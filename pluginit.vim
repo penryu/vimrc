@@ -29,6 +29,7 @@ Plug 'machakann/vim-sandwich'
 Plug 'majutsushi/tagbar'
     let g:tagbar_width=25
     nmap <Leader>t :TagbarToggle<CR>
+Plug 'mattn/webapi-vim' | Plug 'mattn/vim-gist'
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-dispatch'
