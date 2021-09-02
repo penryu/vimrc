@@ -205,6 +205,7 @@ Plug 'elzr/vim-json'
 Plug 'leafgarland/typescript-vim'
 Plug 'ianks/vim-tsx'
     call add(g:coc_global_extensions, 'coc-tsserver')
+    call add(g:coc_global_extensions, 'coc-deno')
 
 " python
     call add(g:coc_global_extensions, 'coc-python')
