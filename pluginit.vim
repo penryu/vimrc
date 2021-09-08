@@ -24,6 +24,8 @@ Plug 'airblade/vim-gitgutter'
 Plug 'blindFS/vim-taskwarrior'
     let g:task_rc_override = 'rc.defaultwidth=0'
 Plug 'bronson/vim-trailing-whitespace'
+Plug 'ctrlpvim/ctrlp.vim'
+    let g:ctrlp_custom_ignore = { 'dir': '\vnode_modules$' }
 Plug 'dense-analysis/ale', { 'for': ['clojure', 'sh', 'zsh'] }
 Plug 'machakann/vim-sandwich'
 Plug 'majutsushi/tagbar'
