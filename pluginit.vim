@@ -27,6 +27,8 @@ Plug 'bronson/vim-trailing-whitespace'
 Plug 'ctrlpvim/ctrlp.vim'
     let g:ctrlp_custom_ignore = { 'dir': '\vnode_modules$' }
 Plug 'dense-analysis/ale', { 'for': ['clojure', 'sh', 'zsh'] }
+Plug 'luochen1990/rainbow'
+    let g:rainbow_active = 1
 Plug 'machakann/vim-sandwich'
 Plug 'majutsushi/tagbar'
     let g:tagbar_width=25
@@ -42,7 +44,6 @@ Plug 'tpope/vim-vinegar'
 Plug 'kovisoft/paredit'
     let g:paredit_smartjump = v:true
     let g:paredit_leader = ","
-
 Plug 'vim-airline/vim-airline'
     let g:airline#extensions#tabline#enabled = 1
     let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
