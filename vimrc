@@ -18,6 +18,7 @@ set expandtab
 set nohlsearch
 set ignorecase
 set linebreak
+set number
 set scrolloff=3
 set shiftwidth=2
 set shortmess=acotI
