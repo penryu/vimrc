@@ -20,6 +20,7 @@ let g:plug_window = "vertical botright new"
 
 call plug#begin('~/.vim/plugs')
 
+Plug 'jlanzarotta/bufexplorer'
 Plug 'airblade/vim-gitgutter'
 Plug 'blindFS/vim-taskwarrior'
     let g:task_rc_override = 'rc.defaultwidth=0'
