@@ -20,7 +20,6 @@ let g:plug_window = "vertical botright new"
 
 call plug#begin('~/.vim/plugs')
 
-Plug 'jlanzarotta/bufexplorer'
 Plug 'airblade/vim-gitgutter'
 Plug 'blindFS/vim-taskwarrior'
     let g:task_rc_override = 'rc.defaultwidth=0'
@@ -28,6 +27,7 @@ Plug 'bronson/vim-trailing-whitespace'
 Plug 'ctrlpvim/ctrlp.vim'
     let g:ctrlp_custom_ignore = { 'dir': '\vnode_modules$' }
 Plug 'dense-analysis/ale', { 'for': ['clojure', 'sh', 'zsh'] }
+Plug 'jlanzarotta/bufexplorer'
 Plug 'machakann/vim-sandwich'
 Plug 'majutsushi/tagbar'
     let g:tagbar_width=25
@@ -49,6 +49,7 @@ Plug 'vim-airline/vim-airline'
     let g:airline#parts#ffenc#skip_expected_string = 'utf-8[unix]'
     let g:airline_powerline_fonts = v:true
     let g:airline_skip_empty_sections = v:true
+    let g:airline_statusline_ontop = 0
     " override default powerline symbols
     if !exists('g:airline_symbols')
         let g:airline_symbols = {}
@@ -56,13 +57,18 @@ Plug 'vim-airline/vim-airline'
     let g:airline_symbols.colnr = ' ㏇'
 Plug 'vim-airline/vim-airline-themes'
     let g:airline_theme = 'owo'
+Plug 'xolox/vim-misc'
+Plug 'xolox/vim-notes'
+    let g:notes_directories = [ "~/Dropbox/Notes" ]
+    nnoremap <Leader>S :botright 60vsplit note:scratch<CR>
+    autocmd FileType notes nnoremap <buffer> <leader>S :wq<CR>
 
 if s:plugin_nerdtree
     Plug 'preservim/nerdtree', {'on': ['NERDTreeFocus','NERDTreeToggle']}
     let g:NERDTreeHijackNetrw = 0
     let g:NERDTreeWinSize=32
-    nnoremap <Leader>N :NERDTreeToggle<CR>
-    nnoremap <Leader>n :NERDTreeFocus<CR>
+    nnoremap <Leader>nf :NERDTreeFocus<CR>
+    nnoremap <Leader>nt :NERDTreeToggle<CR>
     " Exit Vim if NERDTree is the only window left.
     autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
     Plug 'Xuyuanp/nerdtree-git-plugin'
