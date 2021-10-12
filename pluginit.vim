@@ -61,7 +61,7 @@ Plug 'xolox/vim-misc'
 Plug 'xolox/vim-notes'
     let g:notes_directories = [ "~/Dropbox/Notes" ]
     nnoremap <Leader>S :botright 60vsplit note:scratch<CR>
-    autocmd FileType notes nnoremap <buffer> <leader>S :wq<CR>
+    autocmd FileType notes nnoremap <buffer> <leader>S :hide<CR>
 
 if s:plugin_nerdtree
     Plug 'preservim/nerdtree', {'on': ['NERDTreeFocus','NERDTreeToggle']}
