@@ -21,8 +21,6 @@ let g:plug_window = "vertical botright new"
 call plug#begin('~/.vim/plugs')
 
 Plug 'airblade/vim-gitgutter'
-Plug 'blindFS/vim-taskwarrior'
-    let g:task_rc_override = 'rc.defaultwidth=0'
 Plug 'bronson/vim-trailing-whitespace'
 Plug 'ctrlpvim/ctrlp.vim'
     let g:ctrlp_custom_ignore = { 'dir': '\vnode_modules$' }
