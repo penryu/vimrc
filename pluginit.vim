@@ -22,10 +22,9 @@ call plug#begin('~/.vim/plugs')
 
 Plug 'airblade/vim-gitgutter'
 Plug 'bronson/vim-trailing-whitespace'
-Plug 'ctrlpvim/ctrlp.vim'
-    let g:ctrlp_custom_ignore = { 'dir': '\vnode_modules$' }
 Plug 'dense-analysis/ale', { 'for': ['clojure', 'sh', 'zsh'] }
 Plug 'jlanzarotta/bufexplorer'
+Plug 'junegunn/fzf'
 Plug 'machakann/vim-sandwich'
 Plug 'majutsushi/tagbar'
     let g:tagbar_width=25
