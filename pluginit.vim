@@ -1,13 +1,7 @@
 "n pluginit.vim
 " Plugins and related settings, called from init.vim
 
-function PlugUp()
-    execute 'PlugUpgrade'
-    execute 'PlugClean'
-    execute 'PlugInstall'
-    execute 'PlugUpdate'
-endfunction
-command! -nargs=0 -bar -bang PlugUp call PlugUp()
+command! -nargs=0 -bar -bang PlugUp PlugUpgrade | PlugClean | PlugUpdate
 
 " Enable plugins (and their settings) by groups
 let s:plugin_clojure = 0
