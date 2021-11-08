@@ -19,6 +19,9 @@ Plug 'bronson/vim-trailing-whitespace'
 Plug 'dense-analysis/ale', { 'for': ['clojure', 'sh', 'zsh'] }
 Plug 'jlanzarotta/bufexplorer'
 Plug 'junegunn/fzf'
+    let g:fzf_layout = {'window': {'width': 0.8, 'height': 0.3, 'yoffset': 0.0}}
+    nmap <Leader>p :FZF %:h<CR>
+    nmap <Leader>P :FZF<CR>
 Plug 'machakann/vim-sandwich'
 Plug 'majutsushi/tagbar'
     let g:tagbar_width=25
