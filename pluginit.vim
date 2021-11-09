@@ -94,7 +94,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
     nmap <silent> gd <Plug>(coc-definition)
     nmap <silent> gD :call CocAction('jumpDefinition', 'split')<CR>
     nmap <silent> gV :call CocAction('jumpDefinition', 'vsplit')<CR>
-    nmap <silent> gT :call CocAction('jumpDefinition', 'tabe')<CR>
+    nmap <silent> gnt :call CocAction('jumpDefinition', 'tabe')<CR>
     nmap <silent> gy <Plug>(coc-type-definition)
     nmap <silent> gi <Plug>(coc-implementation)
     nmap <silent> gr <Plug>(coc-references)
