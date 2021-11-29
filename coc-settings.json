@@ -1,5 +1,4 @@
 {
-    "coc.source.conjure.priority": 999999,
     "codeLens.enable": true,
     "diagnostic.virtualText": true,
     "java.import.gradle.enabled": true,
@@ -9,6 +8,7 @@
     "python.linting.flake8Enabled": true,
     "python.linting.mypyEnabled": true,
     "python.linting.pylintEnabled": true,
+    "rust-analyzer.checkOnSave.command": "clippy",
     "suggest.echodocSupport": false,
     "suggest.enablePreview": true,
     "suggest.noselect": true,
