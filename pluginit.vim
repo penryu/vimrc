@@ -24,7 +24,7 @@ Plug 'junegunn/fzf'
     nmap <Leader>P :FZF<CR>
 Plug 'machakann/vim-sandwich'
 Plug 'majutsushi/tagbar'
-    let g:tagbar_width=25
+    let g:tagbar_width=30
     nmap <Leader>t :TagbarToggle<CR>
 Plug 'mattn/webapi-vim' | Plug 'mattn/vim-gist'
 Plug 'sheerun/vim-polyglot'
