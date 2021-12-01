@@ -12,7 +12,7 @@ source ~/.vim/pluginit.vim
 set nobackup backupcopy=yes nowritebackup
 set clipboard+=unnamed
 set cmdheight=2
-set colorcolumn=81,101,+1
+set colorcolumn=81,+1
 set cursorline
 set expandtab
 set nohlsearch
