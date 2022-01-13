@@ -27,6 +27,7 @@ Plug 'majutsushi/tagbar'
     let g:tagbar_width=30
     nmap <Leader>t :TagbarToggle<CR>
 Plug 'mattn/webapi-vim' | Plug 'mattn/vim-gist'
+Plug 'romainl/Apprentice'
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-dispatch'
@@ -218,6 +219,7 @@ Plug 'ianks/vim-tsx'
 " rust
 if s:plugin_rust
     Plug 'rust-lang/rust.vim'
+    let g:rustfmt_autosave = 1
     call add(g:coc_global_extensions, 'coc-rust-analyzer')
 endif
 

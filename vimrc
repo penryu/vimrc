@@ -24,7 +24,7 @@ set shiftwidth=2
 set shortmess=acotI
 set sidescrolloff=21
 set softtabstop=2
-set splitbelow
+set splitbelow splitright
 set termguicolors
 set terse
 set textwidth=80
@@ -32,11 +32,16 @@ set timeout nottimeout timeoutlen=300 ttimeoutlen=10
 set updatetime=300
 set viminfo='7,r/Volumes,r/media,r/mnt,r/tmp
 
+function! LocalHighlights() abort
+    highlight Comment guifg=#888888
+endfunction
+autocmd ColorScheme apprentice call LocalHighlights()
 colorscheme apprentice
 
 autocmd! FileType mail       setl textwidth=69
 autocmd! FileType markdown   setl spell
 autocmd! FileType perl       setl shiftwidth=4 softtabstop=4
+autocmd! FileType rust       setl colorcolumn=100
 autocmd! FileType tex        setl spell
 
 " Check for changes to files outside of Vim
