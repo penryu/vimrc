@@ -5,7 +5,6 @@ command! -nargs=0 -bar -bang PlugUp PlugUpgrade | PlugClean | PlugUpdate
 
 " Enable plugins (and their settings) by groups
 let s:plugin_clojure = 0
-let s:plugin_go = 0
 let s:plugin_nerdtree = 1
 let s:plugin_rust = 1
 
@@ -195,12 +194,6 @@ if s:plugin_clojure
     call add(g:coc_global_extensions, 'coc-conjure')
 endif
 
-" go
-if s:plugin_go
-    Plug 'fatih/vim-go', {'do': ':GoUpdateBinaries'}
-    autocmd FileType go call PareditInitBuffer()
-endif
-
 " java
     call add(g:coc_global_extensions, 'coc-java')
 
@@ -217,7 +210,7 @@ Plug 'ianks/vim-tsx'
     call add(g:coc_global_extensions, 'coc-deno')
 
 " python
-    call add(g:coc_global_extensions, 'coc-python')
+    call add(g:coc_global_extensions, 'coc-pyright')
 
 " rust
 if s:plugin_rust

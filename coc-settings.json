@@ -1,23 +1,16 @@
 {
+    "coc.preferences.formatOnSaveFiletypes": ["python"],
     "codeLens.enable": true,
     "diagnostic.virtualText": true,
-    "java.import.gradle.enabled": true,
-    "python.formatting.provider": "autopep8",
+    "diagnostic.virtualTextCurrentLineOnly": true,
+    "pyright.enable": true,
+    "python.formatting.provider": "black",
     "python.linting.enabled": true,
-    "python.jediEnabled": false,
-    "python.linting.flake8Enabled": false,
-    "python.linting.mypyEnabled": true,
     "python.linting.pylintEnabled": true,
+    "python.linting.pytypeEnabled": true,
     "rust-analyzer.checkOnSave.command": "clippy",
     "suggest.echodocSupport": false,
     "suggest.enablePreview": true,
     "suggest.noselect": true,
-    "suggest.removeDuplicateItems": true,
-    "languageserver":{
-        "golang": {
-            "command": "gopls",
-            "rootPatterns": ["go.mod", ".vim/", ".git/"],
-            "filetypes": ["go"]
-        }
-    }
+    "suggest.removeDuplicateItems": true
 }
