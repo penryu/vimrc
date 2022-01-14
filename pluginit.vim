@@ -131,6 +131,9 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
     nmap <leader>a  <Plug>(coc-codeaction-selected)
     " Remap for applying codeAction to the current buffer.
     nmap <leader>ac <Plug>(coc-codeaction)
+    " Perform code lens action
+    nmap <leader>cl <Plug>(coc-codelens-action)
+
     " Apply Autofix to problem on the current line.
     nmap <leader>qf  <Plug>(coc-fix-current)
     " Map function and class text objects
