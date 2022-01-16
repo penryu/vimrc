@@ -1,4 +1,4 @@
-"n pluginit.vim
+" pluginit.vim
 " Plugins and related settings, called from init.vim
 
 command! -nargs=0 -bar -bang PlugUp PlugUpgrade | PlugClean | PlugUpdate

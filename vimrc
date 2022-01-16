@@ -38,11 +38,11 @@ endfunction
 autocmd ColorScheme apprentice call LocalHighlights()
 colorscheme apprentice
 
-autocmd! FileType mail       setl textwidth=69
-autocmd! FileType markdown   setl spell
-autocmd! FileType perl       setl shiftwidth=4 softtabstop=4
-autocmd! FileType rust       setl colorcolumn=100
-autocmd! FileType tex        setl spell
+autocmd! FileType mail      setl textwidth=69
+autocmd! FileType markdown  setl spell
+autocmd! FileType perl      setl shiftwidth=4 softtabstop=4
+autocmd! FileType python    setl shiftwidth=4 softtabstop=4 textwidth=79
+autocmd! FileType tex       setl spell
 
 " Check for changes to files outside of Vim
 " https://unix.stackexchange.com/a/383044
