@@ -1,8 +1,14 @@
 {
     "coc.preferences.formatOnSaveFiletypes": ["python"],
+    "coc.source.around.priority": 1,
+    "coc.source.buffer.priority": 0,
     "codeLens.enable": true,
+    "codeLens.separator": "❯",
+    "codeLens.subseparator": "❯",
     "diagnostic.virtualText": true,
     "diagnostic.virtualTextCurrentLineOnly": true,
+    "javascript.implementationsCodeLens.enable": false,
+    "javascript.referencesCodeLens.enable": false,
     "pyright.enable": true,
     "python.formatting.provider": "black",
     "python.linting.enabled": true,
@@ -12,5 +18,8 @@
     "suggest.echodocSupport": false,
     "suggest.enablePreview": true,
     "suggest.noselect": true,
-    "suggest.removeDuplicateItems": true
+    "suggest.removeDuplicateItems": true,
+    "tsserver.formatOnType": true,
+    "typescript.implementationsCodeLens.enable": false,
+    "typescript.referencesCodeLens.enable": false
 }
