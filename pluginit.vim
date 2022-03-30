@@ -16,15 +16,22 @@ call plug#begin('~/.vim/plugs')
 Plug 'airblade/vim-gitgutter'
 Plug 'bronson/vim-trailing-whitespace'
 Plug 'dense-analysis/ale', { 'for': ['clojure', 'sh', 'zsh'] }
-Plug 'jlanzarotta/bufexplorer'
+Plug 'jeetsukumaran/vim-buffergator'
+    let g:buffergator_autodismiss_on_select = 0
+    let g:buffergator_autoupdate = 1
+    let g:buffergator_display_regime = 'parentdir'
+    let g:buffergator_hsplit_size = 12
+    let g:buffergator_show_full_directory_path = 0
+    let g:buffergator_viewport_split_policy = 'B'
+    let g:buffergator_vsplit_size = 42
 Plug 'junegunn/fzf'
     let g:fzf_layout = {'window': {'width': 0.8, 'height': 0.3, 'yoffset': 0.0}}
     nmap <Leader>p :FZF %:h<CR>
     nmap <Leader>P :FZF<CR>
 Plug 'machakann/vim-sandwich'
-Plug 'majutsushi/tagbar'
+Plug 'preservim/tagbar'
     let g:tagbar_width=30
-    nmap <Leader>t :TagbarToggle<CR>
+    nmap <Leader>tb :TagbarToggle<CR>
 Plug 'mattn/webapi-vim' | Plug 'mattn/vim-gist'
 Plug 'romainl/Apprentice'
 Plug 'sheerun/vim-polyglot'
@@ -60,7 +67,7 @@ Plug 'xolox/vim-notes'
 if s:plugin_nerdtree
     Plug 'preservim/nerdtree', {'on': ['NERDTreeFocus','NERDTreeToggle']}
     let g:NERDTreeHijackNetrw = 0
-    let g:NERDTreeWinSize=32
+    let g:NERDTreeWinSize=42
     nnoremap <Leader>nf :NERDTreeFocus<CR>
     nnoremap <Leader>nt :NERDTreeToggle<CR>
     " Exit Vim if NERDTree is the only window left.
