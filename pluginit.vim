@@ -205,12 +205,13 @@ endif
     call add(g:coc_global_extensions, 'coc-java')
 
 " js
-Plug 'pangloss/vim-javascript'
-    let g:javascript_plugin_jsdoc = v:true
-    call add(g:coc_global_extensions, 'coc-eslint')
 Plug 'elzr/vim-json'
     let g:vim_json_syntax_conceal = v:true
     call add(g:coc_global_extensions, 'coc-json')
+Plug 'pangloss/vim-javascript'
+    let g:javascript_plugin_jsdoc = v:true
+    call add(g:coc_global_extensions, 'coc-eslint')
+    call add(g:coc_global_extensions, 'coc-prettier')
 Plug 'leafgarland/typescript-vim'
 Plug 'ianks/vim-tsx'
     call add(g:coc_global_extensions, 'coc-tsserver')
