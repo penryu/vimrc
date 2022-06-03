@@ -227,9 +227,6 @@ if s:plugin_rust
     call add(g:coc_global_extensions, 'coc-rust-analyzer')
 endif
 
-" scala
-    call add(g:coc_global_extensions, 'coc-metals')
-
 if filereadable(expand("~/.vim/local/pluginit.vim"))
     source ~/.vim/local/pluginit.vim
 endif
