@@ -191,7 +191,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
     nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
     " Resume latest coc list.
     nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
-    let g:coc_global_extensions = ['coc-css', 'coc-html', 'coc-yaml']
+    let g:coc_global_extensions = ['coc-css', 'coc-git', 'coc-html', 'coc-yaml']
 
 " clojure
 if s:plugin_clojure
