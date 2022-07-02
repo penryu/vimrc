@@ -14,6 +14,7 @@ set clipboard+=unnamed
 set cmdheight=2
 set colorcolumn=81,+1
 set cursorline
+set directory=.
 set expandtab
 set nohlsearch
 set ignorecase
