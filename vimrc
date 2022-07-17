@@ -20,7 +20,7 @@ set nohlsearch
 set ignorecase
 set linebreak
 set number
-set scrolloff=3
+set scrolloff=999
 set shiftwidth=2
 set shortmess=acotI
 set sidescrolloff=21
