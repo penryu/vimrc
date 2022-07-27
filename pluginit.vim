@@ -227,6 +227,11 @@ if s:plugin_rust
     call add(g:coc_global_extensions, 'coc-rust-analyzer')
 endif
 
+if has("nvim")
+    Plug 'nvim-treesitter/nvim-treesitter'
+    Plug 'nvim-orgmode/orgmode'
+endif
+
 if filereadable(expand("~/.vim/local/pluginit.vim"))
     source ~/.vim/local/pluginit.vim
 endif
