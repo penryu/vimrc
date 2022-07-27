@@ -67,7 +67,7 @@ Plug 'xolox/vim-notes'
 if s:plugin_nerdtree
     Plug 'preservim/nerdtree', {'on': ['NERDTreeFocus','NERDTreeToggle']}
     let g:NERDTreeHijackNetrw = 0
-    let g:NERDTreeWinSize=42
+    let g:NERDTreeWinSize=35
     nnoremap <Leader>nf :NERDTreeFocus<CR>
     nnoremap <Leader>nt :NERDTreeToggle<CR>
     " Exit Vim if NERDTree is the only window left.
