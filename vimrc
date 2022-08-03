@@ -24,6 +24,7 @@ set scrolloff=7
 set shiftwidth=2
 set shortmess=acotI
 set sidescrolloff=21
+set signcolumn=yes
 set softtabstop=2
 set splitbelow splitright
 set termguicolors

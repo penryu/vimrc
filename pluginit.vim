@@ -80,19 +80,19 @@ Plug 'inkarkat/vim-SyntaxRange'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
     " Tab to trigger completion with characters ahead and navigate.
     inoremap <silent><expr> <TAB>
-                \ pumvisible() ? "\<C-n>" :
-                \ <SID>check_back_space() ? "\<TAB>" :
+                \ coc#pum#visible() ? coc#pum#next(1):
+                \ CheckBackspace() ? "\<Tab>" :
                 \ coc#refresh()
-    inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-    function! s:check_back_space() abort
+    inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+    function! CheckBackspace() abort
         let col = col('.') - 1
         return !col || getline('.')[col - 1] =~# '\s'
     endfunction
     " Use <c-space> to trigger completion.
     inoremap <silent><expr> <c-space> coc#refresh()
-    " Use <cr> to confirm completion.
-    " `<C-g>u` means break undo chain at current position.
-    inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
+    " Make <CR> to accept selected completion item or notify coc.nvim to format
+    " <C-g>u breaks current undo, please make your own choice.
+    inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
                 \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
     " Use `[g` and `]g` to navigate diagnostics
     nmap <silent> [g <Plug>(coc-diagnostic-prev)
@@ -106,14 +106,12 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
     nmap <silent> gi <Plug>(coc-implementation)
     nmap <silent> gr <Plug>(coc-references)
     " Use K to show documentation in preview window
-    nnoremap <silent> K :call <SID>show_documentation()<CR>
-    function! s:show_documentation()
-        if (index(['vim','help'], &filetype) >= 0)
-            execute 'h '.expand('<cword>')
-        elseif (coc#rpc#ready())
+    nnoremap <silent> K :call ShowDocumentation()<CR>
+    function! ShowDocumentation()
+        if CocAction('hasProvider', 'hover')
             call CocActionAsync('doHover')
         else
-            execute '!' . &keywordprg . " " . expand('<cword>')
+            call feedkeys('K', 'in')
         endif
     endfunction
 
@@ -137,7 +135,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
     nmap <leader>a  <Plug>(coc-codeaction-selected)
     " Remap for applying codeAction to the current buffer.
     nmap <leader>ac <Plug>(coc-codeaction)
-    " Perform code lens action
+    " Perform code lens action on current line
     nmap <leader>cl <Plug>(coc-codelens-action)
 
     " Apply Autofix to problem on the current line.
@@ -165,11 +163,11 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
     nmap <silent> <C-s> <Plug>(coc-range-select)
     xmap <silent> <C-s> <Plug>(coc-range-select)
     " Add `:Format` to format current buffer
-    command! -nargs=0 Format :call CocAction('format')
+    command! -nargs=0 Format :call CocActionAsync('format')
     " Use `:Fold` to fold current buffer
     command! -nargs=? Fold :call CocAction('fold', <f-args>)
     " Add `:OR` command to organize import of current buffer.
-    command! -nargs=0 OR :call CocAction('runCommand', 'editor.action.organizeImport')
+    command! -nargs=0 OR :call CocActionAsync('runCommand', 'editor.action.organizeImport')
     " Add native (Neo)Vim status line support.
     " See `:h coc-status` for integration with plugins with custom statusline:
     " Example: lightline.vim, vim-airline
