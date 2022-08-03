@@ -17,7 +17,6 @@
     "python.linting.pytypeEnabled": true,
     "rust-analyzer.checkOnSave.command": "clippy",
     "rust-analyzer.updates.channel": "nightly",
-    "suggest.enablePreview": true,
     "suggest.noselect": true,
     "suggest.removeDuplicateItems": true,
     "tsserver.formatOnType": true,
