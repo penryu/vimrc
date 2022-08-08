@@ -30,7 +30,7 @@ Plug 'junegunn/fzf'
     nmap <Leader>P :FZF<CR>
 Plug 'machakann/vim-sandwich'
 Plug 'preservim/tagbar'
-    let g:tagbar_width=30
+    let g:tagbar_width=42
     nmap <Leader>tb :TagbarToggle<CR>
 Plug 'mattn/webapi-vim' | Plug 'mattn/vim-gist'
 Plug 'romainl/Apprentice'
@@ -65,13 +65,15 @@ Plug 'xolox/vim-notes'
     autocmd FileType notes nnoremap <buffer> <leader>S :hide<CR>
 
 if s:plugin_nerdtree
-    Plug 'preservim/nerdtree', {'on': ['NERDTreeFocus','NERDTreeToggle']}
+    Plug 'preservim/nerdtree', {
+                \ 'on': ['NERDTreeFocus','NERDTreeMirror','NERDTreeToggle'] }
     let g:NERDTreeHijackNetrw = 0
-    let g:NERDTreeWinSize=35
+    let g:NERDTreeWinSize=42
     nnoremap <Leader>nf :NERDTreeFocus<CR>
     nnoremap <Leader>nt :NERDTreeToggle<CR>
     " Exit Vim if NERDTree is the only window left.
     autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
+    autocmd BufWinEnter * NERDTreeMirror
     Plug 'Xuyuanp/nerdtree-git-plugin'
 endif
 
