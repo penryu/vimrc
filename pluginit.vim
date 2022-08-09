@@ -50,7 +50,7 @@ Plug 'vim-airline/vim-airline'
     let g:airline#parts#ffenc#skip_expected_string = 'utf-8[unix]'
     let g:airline_powerline_fonts = v:true
     let g:airline_skip_empty_sections = v:true
-    let g:airline_statusline_ontop = 0
+    let g:airline_statusline_ontop = 1
     " override default powerline symbols
     if !exists('g:airline_symbols')
         let g:airline_symbols = {}
@@ -173,7 +173,8 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
     " Add native (Neo)Vim status line support.
     " See `:h coc-status` for integration with plugins with custom statusline:
     " Example: lightline.vim, vim-airline
-    set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+    " penryu: disabled while airline status on top
+    " set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
     " Mappings for CocList
     " Show all diagnostics.
     nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>

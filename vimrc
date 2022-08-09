@@ -35,7 +35,11 @@ set updatetime=300
 set viminfo='7,r/Volumes,r/media,r/mnt,r/tmp
 
 function! LocalHighlights() abort
+    " Make comments a little more readable
     highlight Comment guifg=#888888
+    " Make native statuslines match airline theme
+    highlight StatusLine ctermfg=236 ctermbg=117 guifg=#303030 guibg=#87d7ff
+    highlight StatusLineNC ctermfg=249 ctermbg=238 guifg=#b2b2b2 guibg=#444444
 endfunction
 autocmd ColorScheme apprentice call LocalHighlights()
 colorscheme apprentice
