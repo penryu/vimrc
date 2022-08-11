@@ -79,6 +79,6 @@ nmap <C-n> :bnext<CR>
 
 cabbr <expr> %% expand('%:p:h')
 
-command Tabn tab split | next
+command! Tabn tab split | next
 
 call SourceIfExist("~/.vim/vimrc.local")
